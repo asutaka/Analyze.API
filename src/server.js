@@ -1,6 +1,9 @@
 const { CheckDomain } = require('./cronjob.js');
 const express = require('express');
 const crypto = require('crypto')
+const bodyParser = require('body-parser');
+
+var jsonParser = bodyParser.json()
 
 const app = express();
 const PORT = process.env.PORT || 8999;
@@ -140,6 +143,7 @@ app.get('/secrect/maps/:signature', function(req, res) {
     }
     res.status(200).json({data: arrMap });
 });
+
 //Delete User
 app.post('/secrect/deleteMap', jsonParser,function (req, res) {
     var data = req.body;
@@ -161,3 +165,15 @@ app.post('/secrect/deleteMap', jsonParser,function (req, res) {
         return res.status(200).json({msg: "[error] User Not Found!", code: -99 }); 
     }
 });
+
+
+const { Telegraf } = require('telegraf')
+const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
+
+var tmp = bot.telegram.getUpdates();
+console.log(tmp);
+bot.command('start', ctx => {
+    console.log(ctx.from)
+    bot.telegram.sendMessage(ctx.chat.id, 'hello there! Welcome to my new telegram bot.', {
+    })
+})

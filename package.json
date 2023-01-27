@@ -2,9 +2,10 @@
   "name": "analyze.api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -19,10 +20,13 @@
   "dependencies": {
     "axios": "^1.2.3",
     "body-parse": "^0.1.0",
+    "body-parser": "^1.20.1",
     "cron": "^2.2.0",
     "crypto": "^1.0.1",
     "express": "^4.18.2",
     "input": "^1.0.1",
+    "nodemon": "^2.0.20",
+    "telegraf": "^4.11.2",
     "telegram": "^2.15.5"
   }
 }
