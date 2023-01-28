@@ -3,6 +3,17 @@ const express = require('express');
 const crypto = require('crypto')
 const bodyParser = require('body-parser');
 const { Telegraf } = require('telegraf');
+const axios = require("axios");
+const DOMAIN_SUB1 = "https://asutaka-subcribe1.onrender.com/";
+const DOMAIN_SUB2 = "https://asutaka-subcribe2.onrender.com/";
+const DOMAIN_SUB3 = "https://asutakaoutlook-subcribe3.onrender.com/";
+const DOMAIN_SUB4 = "https://asutakaoutlook-subcribe4.onrender.com/";
+const DOMAIN_SUB5 = "https://nguyenphuict-subcribe5.onrender.com/";
+const DOMAIN_SUB6 = "https://nguyenphuict-subcribe6.onrender.com/";
+const DOMAIN_SUB7 = "https://asutakayahoo-subcribe7.onrender.com/";
+const DOMAIN_SUB8 = "https://asutakayahoo-subcribe8.onrender.com/";
+const CHAT_ID = 1828525662;
+
 const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
 // Require `PhoneNumberFormat`. 
 const PNF = require('google-libphonenumber').PhoneNumberFormat;
@@ -253,3 +264,911 @@ app.post('/secrect/insertMap', jsonParser,function (req, res) {
     return res.status(200).json({msg: "success", code: 1 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////
+//fill Data
+var arrSub1 = [
+    '1inchusdt',
+    'aaveusdt',
+    'acausdt',
+    'achusdt',
+    'acmusdt',
+    'adausdt',
+    'adxusdt',
+    'agldusdt',
+    'aionusdt',
+    'akrousdt',
+    'alcxusdt',
+    'algousdt',
+    'aliceusdt',
+    'alpacausdt',
+    'alphausdt',
+    'alpineusdt',
+    'ampusdt',
+    'ankrusdt',
+    'antusdt',
+    'apeusdt',
+    'api3usdt',
+    'aptusdt',
+    'ardrusdt',
+    'arpausdt',
+    'arusdt',
+    'asrusdt',
+    'astrusdt',
+    'atausdt',
+    'atmusdt',
+    'atomusdt',
+    'auctionusdt',
+    'audiousdt',
+    'audusdt',
+    'autousdt',
+    'avausdt',
+    'avaxusdt',
+    'axsusdt',
+    'badgerusdt',
+    'bakeusdt',
+];
+var arrSub2 = [
+    'balusdt',
+    'bandusdt',
+    'barusdt',
+    'batusdt',
+    'bchusdt',
+    'beamusdt',
+    'belusdt',
+    'betausdt',
+    'bicousdt',
+    'bifiusdt',
+    'blzusdt',
+    'bnbusdt',
+    'bntusdt',
+    'bnxusdt',
+    'bondusdt',
+    'bswusdt',
+    'btcusdt',
+    'btsusdt',
+    'bttcusdt',
+    'burgerusdt',
+    'busdusdt',
+    'c98usdt',
+    'cakeusdt',
+    'celousdt',
+    'celrusdt',
+    'cfxusdt',
+    'chessusdt',
+    'chrusdt',
+    'chzusdt',
+    'cityusdt',
+    'ckbusdt',
+    'clvusdt',
+    'cocosusdt',
+    'cotiusdt',
+    'crvusdt',
+    'ctkusdt',
+    'ctsiusdt',
+    'ctxcusdt',
+    'cvpusdt',
+    'cvxusdt',
+];
+var arrSub3 = [
+    'darusdt',
+    'dashusdt',
+    'datausdt',
+    'dcrusdt',
+    'degousdt',
+    'dentusdt',
+    'dexeusdt',
+    'dfusdt',
+    'dgbusdt',
+    'diausdt',
+    'dockusdt',
+    'dodousdt',
+    'dogeusdt',
+    'dotusdt',
+    'drepusdt',
+    'duskusdt',
+    'dydxusdt',
+    'egldusdt',
+    'elfusdt',
+    'enjusdt',
+    'ensusdt',
+    'eosusdt',
+    'epxusdt',
+    'ernusdt',
+    'etcusdt',
+    'ethusdt',
+    'eurusdt',
+    'farmusdt',
+    'fetusdt',
+    'fidausdt',
+    'filusdt',
+    'fiousdt',
+    'firousdt',
+    'fisusdt',
+    'flmusdt',
+    'flowusdt',
+    'fluxusdt',
+    'forthusdt',
+    'forusdt',
+    'frontusdt',
+];
+var arrSub4 = [
+    'ftmusdt',
+    'funusdt',
+    'fxsusdt',
+    'galausdt',
+    'galusdt',
+    'gbpusdt',
+    'ghstusdt',
+    'glmrusdt',
+    'gmtusdt',
+    'gmxusdt',
+    'gnousdt',
+    'grtusdt',
+    'gtcusdt',
+    'hardusdt',
+    'hbarusdt',
+    'hftusdt',
+    'highusdt',
+    'hiveusdt',
+    'hookusdt',
+    'hotusdt',
+    'icpusdt',
+    'icxusdt',
+    'idexusdt',
+    'ilvusdt',
+    'imxusdt',
+    'injusdt',
+    'iostusdt',
+    'iotausdt',
+    'iotxusdt',
+    'irisusdt',
+    'jasmyusdt',
+    'joeusdt',
+    'jstusdt',
+    'juvusdt',
+    'kavausdt',
+    'kdausdt',
+    'keyusdt',
+    'klayusdt',
+    'kmdusdt',
+    'kncusdt',
+];
+var arrSub5 = [
+    'kp3rusdt',
+    'ksmusdt',
+    'laziousdt',
+    'ldousdt',
+    'leverusdt',
+    'linausdt',
+    'linkusdt',
+    'litusdt',
+    'lokausdt',
+    'lptusdt',
+    'lrcusdt',
+    'lskusdt',
+    'ltcusdt',
+    'ltousdt',
+    'lunausdt',
+    'luncusdt',
+    'magicusdt',
+    'manausdt',
+    'maskusdt',
+    'maticusdt',
+    'mblusdt',
+    'mboxusdt',
+    'mcusdt',
+    'mdtusdt',
+    'mdxusdt',
+    'minausdt',
+    'mkrusdt',
+    'mlnusdt',
+    'mobusdt',
+    'movrusdt',
+    'mtlusdt',
+    'multiusdt',
+    'nbtusdt',
+    'nearusdt',
+    'neblusdt',
+    'neousdt',
+    'nexousdt',
+];
+var arrSub6 = [
+    'nknusdt',
+    'nmrusdt',
+    'nulsusdt',
+    'oceanusdt',
+    'ognusdt',
+    'ogusdt',
+    'omgusdt',
+    'omusdt',
+    'oneusdt',
+    'ongusdt',
+    'ontusdt',
+    'ookiusdt',
+    'opusdt',
+    'ornusdt',
+    'osmousdt',
+    'oxtusdt',
+    'paxgusdt',
+    'peopleusdt',
+    'perlusdt',
+    'perpusdt',
+    'phausdt',
+    'phbusdt',
+    'plausdt',
+    'pntusdt',
+    'polsusdt',
+    'polyxusdt',
+    'pondusdt',
+    'portousdt',
+    'powrusdt',
+    'psgusdt',
+    'pundixusdt',
+    'pyrusdt',
+    'qiusdt',
+    'qntusdt',
+    'qtumusdt',
+    'quickusdt',
+    'radusdt',
+    'rareusdt',
+    'rayusdt',
+    'reefusdt',
+];
+var arrSub7 = [
+    'reiusdt',
+    'renusdt',
+    'requsdt',
+    'rifusdt',
+    'rlcusdt',
+    'rndrusdt',
+    'roseusdt',
+    'rsrusdt',
+    'runeusdt',
+    'rvnusdt',
+    'sandusdt',
+    'santosusdt',
+    'scrtusdt',
+    'scusdt',
+    'sfpusdt',
+    'shibusdt',
+    'sklusdt',
+    'slpusdt',
+    'snxusdt',
+    'solusdt',
+    'spellusdt',
+    'steemusdt',
+    'stgusdt',
+    'stmxusdt',
+    'storjusdt',
+    'stptusdt',
+    'straxusdt',
+    'stxusdt',
+    'sunusdt',
+    'superusdt',
+    'sushiusdt',
+    'sxpusdt',
+    'sysusdt',
+    'tfuelusdt',
+    'thetausdt',
+    'tkousdt',
+    'tlmusdt',
+    'tomousdt',
+];
+var arrSub8 = [
+    'trbusdt',
+    'troyusdt',
+    'truusdt',
+    'trxusdt',
+    'tusdt',
+    'tvkusdt',
+    'twtusdt',
+    'umausdt',
+    'unfiusdt',
+    'uniusdt',
+    'utkusdt',
+    'vetusdt',
+    'vgxusdt',
+    'vidtusdt',
+    'viteusdt',
+    'voxelusdt',
+    'vthousdt',
+    'wanusdt',
+    'wavesusdt',
+    'waxpusdt',
+    'wingusdt',
+    'winusdt',
+    'wnxmusdt',
+    'woousdt',
+    'wrxusdt',
+    'wtcusdt',
+    'xecusdt',
+    'xemusdt',
+    'xlmusdt',
+    'xmrusdt',
+    'xnousdt',
+    'xrpusdt',
+    'xtzusdt',
+    'xvgusdt',
+    'xvsusdt',
+    'yfiiusdt',
+    'yfiusdt',
+    'yggusdt',
+    'zecusdt',
+    'zenusdt',
+    'zilusdt',
+    'zrxusdt',
+];
+var arrSub = [
+    '1inchusdt',
+    'aaveusdt',
+    'acausdt',
+    'achusdt',
+    'acmusdt',
+    'adausdt',
+    'adxusdt',
+    'agldusdt',
+    'aionusdt',
+    'akrousdt',
+    'alcxusdt',
+    'algousdt',
+    'aliceusdt',
+    'alpacausdt',
+    'alphausdt',
+    'alpineusdt',
+    'ampusdt',
+    'ankrusdt',
+    'antusdt',
+    'apeusdt',
+    'api3usdt',
+    'aptusdt',
+    'ardrusdt',
+    'arpausdt',
+    'arusdt',
+    'asrusdt',
+    'astrusdt',
+    'atausdt',
+    'atmusdt',
+    'atomusdt',
+    'auctionusdt',
+    'audiousdt',
+    'audusdt',
+    'autousdt',
+    'avausdt',
+    'avaxusdt',
+    'axsusdt',
+    'badgerusdt',
+    'bakeusdt',
+    'balusdt',
+    'bandusdt',
+    'barusdt',
+    'batusdt',
+    'bchusdt',
+    'beamusdt',
+    'belusdt',
+    'betausdt',
+    'bicousdt',
+    'bifiusdt',
+    'blzusdt',
+    'bnbusdt',
+    'bntusdt',
+    'bnxusdt',
+    'bondusdt',
+    'bswusdt',
+    'btcusdt',
+    'btsusdt',
+    // 'bttcusdt',
+    // 'burgerusdt',
+    // 'busdusdt',
+    // 'c98usdt',
+    // 'cakeusdt',
+    // 'celousdt',
+    // 'celrusdt',
+    // 'cfxusdt',
+    // 'chessusdt',
+    // 'chrusdt',
+    // 'chzusdt',
+    // 'cityusdt',
+    // 'ckbusdt',
+    // 'clvusdt',
+    // 'cocosusdt',
+    // 'cotiusdt',
+    // 'crvusdt',
+    // 'ctkusdt',
+    // 'ctsiusdt',
+    // 'ctxcusdt',
+    // 'cvpusdt',
+    // 'cvxusdt',
+    // 'darusdt',
+    // 'dashusdt',
+    // 'datausdt',
+    // 'dcrusdt',
+    // 'degousdt',
+    // 'dentusdt',
+    // 'dexeusdt',
+    // 'dfusdt',
+    // 'dgbusdt',
+    // 'diausdt',
+    // 'dockusdt',
+    // 'dodousdt',
+    // 'dogeusdt',
+    // 'dotusdt',
+    // 'drepusdt',
+    // 'duskusdt',
+    // 'dydxusdt',
+    // 'egldusdt',
+    // 'elfusdt',
+    // 'enjusdt',
+    // 'ensusdt',
+    // 'eosusdt',
+    // 'epxusdt',
+    // 'ernusdt',
+    // 'etcusdt',
+    // 'ethusdt',
+    // 'eurusdt',
+    // 'farmusdt',
+    // 'fetusdt',
+    // 'fidausdt',
+    // 'filusdt',
+    // 'fiousdt',
+    // 'firousdt',
+    // 'fisusdt',
+    // 'flmusdt',
+    // 'flowusdt',
+    // 'fluxusdt',
+    // 'forthusdt',
+    // 'forusdt',
+    // 'frontusdt',
+    // 'ftmusdt',
+    // 'funusdt',
+    // 'fxsusdt',
+    // 'galausdt',
+    // 'galusdt',
+    // 'gbpusdt',
+    // 'ghstusdt',
+    // 'glmrusdt',
+    // 'gmtusdt',
+    // 'gmxusdt',
+    // 'gnousdt',
+    // 'grtusdt',
+    // 'gtcusdt',
+    // 'hardusdt',
+    // 'hbarusdt',
+    // 'hftusdt',
+    // 'highusdt',
+    // 'hiveusdt',
+    // 'hookusdt',
+    // 'hotusdt',
+    // 'icpusdt',
+    // 'icxusdt',
+    // 'idexusdt',
+    // 'ilvusdt',
+    // 'imxusdt',
+    // 'injusdt',
+    // 'iostusdt',
+    // 'iotausdt',
+    // 'iotxusdt',
+    // 'irisusdt',
+    // 'jasmyusdt',
+    // 'joeusdt',
+    // 'jstusdt',
+    // 'juvusdt',
+    // 'kavausdt',
+    // 'kdausdt',
+    // 'keyusdt',
+    // 'klayusdt',
+    // 'kmdusdt',
+    // 'kncusdt',
+    // 'kp3rusdt',
+    // 'ksmusdt',
+    // 'laziousdt',
+    // 'ldousdt',
+    // 'leverusdt',
+    // 'linausdt',
+    // 'linkusdt',
+    // 'litusdt',
+    // 'lokausdt',
+    // 'lptusdt',
+    // 'lrcusdt',
+    // 'lskusdt',
+    // 'ltcusdt',
+    // 'ltousdt',
+    // 'lunausdt',
+    // 'luncusdt',
+    // 'magicusdt',
+    // 'manausdt',
+    // 'maskusdt',
+    // 'maticusdt',
+    // 'mblusdt',
+    // 'mboxusdt',
+    // 'mcusdt',
+    // 'mdtusdt',
+    // 'mdxusdt',
+    // 'minausdt',
+    // 'mkrusdt',
+    // 'mlnusdt',
+    // 'mobusdt',
+    // 'movrusdt',
+    // 'mtlusdt',
+    // 'multiusdt',
+    // 'nbtusdt',
+    // 'nearusdt',
+    // 'neblusdt',
+    // 'neousdt',
+    // 'nexousdt',
+    // 'nknusdt',
+    // 'nmrusdt',
+    // 'nulsusdt',
+    // 'oceanusdt',
+    // 'ognusdt',
+    // 'ogusdt',
+    // 'omgusdt',
+    // 'omusdt',
+    // 'oneusdt',
+    // 'ongusdt',
+    // 'ontusdt',
+    // 'ookiusdt',
+    // 'opusdt',
+    // 'ornusdt',
+    // 'osmousdt',
+    // 'oxtusdt',
+    // 'paxgusdt',
+    // 'peopleusdt',
+    // 'perlusdt',
+    // 'perpusdt',
+    // 'phausdt',
+    // 'phbusdt',
+    // 'plausdt',
+    // 'pntusdt',
+    // 'polsusdt',
+    // 'polyxusdt',
+    // 'pondusdt',
+    // 'portousdt',
+    // 'powrusdt',
+    // 'psgusdt',
+    // 'pundixusdt',
+    // 'pyrusdt',
+    // 'qiusdt',
+    // 'qntusdt',
+    // 'qtumusdt',
+    // 'quickusdt',
+    // 'radusdt',
+    // 'rareusdt',
+    // 'rayusdt',
+    // 'reefusdt',
+    // 'reiusdt',
+    // 'renusdt',
+    // 'requsdt',
+    // 'rifusdt',
+    // 'rlcusdt',
+    // 'rndrusdt',
+    // 'roseusdt',
+    // 'rsrusdt',
+    // 'runeusdt',
+    // 'rvnusdt',
+    // 'sandusdt',
+    // 'santosusdt',
+    // 'scrtusdt',
+    // 'scusdt',
+    // 'sfpusdt',
+    // 'shibusdt',
+    // 'sklusdt',
+    // 'slpusdt',
+    // 'snxusdt',
+    // 'solusdt',
+    // 'spellusdt',
+    // 'steemusdt',
+    // 'stgusdt',
+    // 'stmxusdt',
+    // 'storjusdt',
+    // 'stptusdt',
+    // 'straxusdt',
+    // 'stxusdt',
+    // 'sunusdt',
+    // 'superusdt',
+    // 'sushiusdt',
+    // 'sxpusdt',
+    // 'sysusdt',
+    // 'tfuelusdt',
+    // 'thetausdt',
+    // 'tkousdt',
+    // 'tlmusdt',
+    // 'tomousdt',
+    // 'trbusdt',
+    // 'troyusdt',
+    // 'truusdt',
+    // 'trxusdt',
+    // 'tusdt',
+    // 'tvkusdt',
+    // 'twtusdt',
+    // 'umausdt',
+    // 'unfiusdt',
+    // 'uniusdt',
+    // 'utkusdt',
+    // 'vetusdt',
+    // 'vgxusdt',
+    // 'vidtusdt',
+    // 'viteusdt',
+    // 'voxelusdt',
+    // 'vthousdt',
+    // 'wanusdt',
+    // 'wavesusdt',
+    // 'waxpusdt',
+    // 'wingusdt',
+    // 'winusdt',
+    // 'wnxmusdt',
+    // 'woousdt',
+    // 'wrxusdt',
+    // 'wtcusdt',
+    // 'xecusdt',
+    // 'xemusdt',
+    // 'xlmusdt',
+    // 'xmrusdt',
+    // 'xnousdt',
+    // 'xrpusdt',
+    // 'xtzusdt',
+    // 'xvgusdt',
+    // 'xvsusdt',
+    // 'yfiiusdt',
+    // 'yfiusdt',
+    // 'yggusdt',
+    // 'zecusdt',
+    // 'zenusdt',
+    // 'zilusdt',
+    // 'zrxusdt',
+];
+
+app.post('/secrect/fillData', jsonParser,function (req, res) {
+    // var data = req.body;
+    // var text = "fillData";
+    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    // if(hash != data.signature)
+    // {
+    //     return res.status(200).json({msg: "[error] Signature Incorrect!", code: -10 });
+    // }
+    FixData();
+    return res.status(200).json({msg: "success", code: 1 });
+});
+
+var index = 1;
+async function FixData() {
+    try {
+        index = 1; 
+        var resSet1 = await axios.post(DOMAIN_SUB1 + "/syncDataClient/true", model);
+        if(resSet1.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
+            return;
+        }
+        var resSet2 = await axios.post(DOMAIN_SUB2 + "/syncDataClient/true", model);
+        if(resSet2.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
+            return;
+        }
+        var resSet3 = await axios.post(DOMAIN_SUB3 + "/syncDataClient/true", model);
+        if(resSet3.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
+            return;
+        }
+        var resSet4 = await axios.post(DOMAIN_SUB4 + "/syncDataClient/true", model);
+        if(resSet4.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
+            return;
+        }
+        var resSet5 = await axios.post(DOMAIN_SUB5 + "/syncDataClient/true", model);
+        if(resSet5.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
+            return;
+        }
+        var resSet6 = await axios.post(DOMAIN_SUB6 + "/syncDataClient/true", model);
+        if(resSet6.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
+            return;
+        }
+        var resSet7 = await axios.post(DOMAIN_SUB7 + "/syncDataClient/true", model);
+        if(resSet7.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
+            return;
+        }
+        var resSet8 = await axios.post(DOMAIN_SUB8 + "/syncDataClient/true", model);
+        if(resSet8.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
+            return;
+        }
+
+        const sleep = ms =>
+        new Promise(res => {
+            setTimeout(res, ms)
+        })
+
+        const myPromise = num =>
+        sleep(5000).then(async () => {
+            //bổ sung bản ghi call từ Binance
+            try{
+                var index1 = arrSub1.findIndex(x => x == num);
+                var index2 = arrSub2.findIndex(x => x == num);
+                var index3 = arrSub3.findIndex(x => x == num);
+                var index4 = arrSub4.findIndex(x => x == num);
+                var index5 = arrSub5.findIndex(x => x == num);
+                var index6 = arrSub6.findIndex(x => x == num);
+                var index7 = arrSub7.findIndex(x => x == num);
+                var index8 = arrSub8.findIndex(x => x == num);
+
+                let arrInsert = [];
+                var symbol = num.toUpperCase();
+                console.log(index, symbol);
+                axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=300").then(async (response) => {
+                    response.data.forEach((item) => {
+                        console.log(item);
+                        arrInsert.push({name: symbol, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
+                    }); 
+                    if(arrInsert.length > 0)
+                    {
+                        var num = 0;
+                        var DM = "";
+                        if(index1 >= 0)
+                        {
+                            num = index1 + 1;
+                            DM = DOMAIN_SUB1;
+                        }
+                        else if(index2 >= 0)
+                        {
+                            num = index2 + 1;
+                            DM = DOMAIN_SUB2;
+                        }
+                        else if(index3 >= 0)
+                        {
+                            num = index3 + 1;
+                            DM = DOMAIN_SUB3;
+                        }
+                        else if(index4 >= 0)
+                        {
+                            num = index4 + 1;
+                            DM = DOMAIN_SUB4;
+                        }
+                        else if(index5 >= 0)
+                        {
+                            num = index5 + 1;
+                            DM = DOMAIN_SUB5;
+                        }
+                        else if(index6 >= 0)
+                        {
+                            num = index6 + 1;
+                            DM = DOMAIN_SUB6;
+                        }
+                        else if(index7 >= 0)
+                        {
+                            num = index7 + 1;
+                            DM = DOMAIN_SUB7;
+                        }
+                        else if(index8 >= 0)
+                        {
+                            num = index8 + 1;
+                            DM = DOMAIN_SUB8;
+                        }
+
+                        var model = { num: num, data:  arrInsert}
+                        var resInsert = await axios.post(DM + "/syncDataClientVal", model);
+                        console.log("resInsert", resInsert.data);
+
+                        if(index == 1 && index1 < 0)
+                        {
+                            //send tele
+                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": SynData success!");
+                            index = 2; 
+                        }
+                        else if(index == 2 && index2 < 0)
+                        {
+                            //send tele
+                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": SynData success!");
+                            index = 3; 
+                        }
+                        else if(index == 3 && index3 < 0)
+                        {
+                            //send tele
+                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": SynData success!");
+                            index = 4; 
+                        }
+                        else if(index == 4 && index4 < 0)
+                        {
+                            //send tele
+                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": SynData success!");
+                            index = 5; 
+                        }
+                        else if(index == 5 && index5 < 0)
+                        {
+                            //send tele
+                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": SynData success!");
+                            index = 6; 
+                        }
+                        else if(index == 6 && index6 < 0)
+                        {
+                            //send tele
+                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": SynData success!");
+                            index = 7; 
+                        }
+                        else if(index == 7 && index7 < 0)
+                        {
+                            //send tele
+                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": SynData success!");
+                            index = 8; 
+                        }
+                    }
+                });
+            }
+            catch(ex)
+            {
+                console.log("[ERROR] NOT FIXDATA symbol " + num + " not working");
+            }
+        })
+
+        const forEachSeries = async (iterable, action) => {
+            for (const x of iterable) {
+                await action(x)
+            }
+        }
+
+        forEachSeries(arrSub, myPromise)
+        .then(() => {
+            bot.telegram.sendMessage(CHAT_ID, "SynData ALL Domain success!");
+            console.log('all done!')
+        })
+        var resSets1 = await axios.post(DOMAIN_SUB1 + "/syncDataClient/false", model);
+        if(resSets1.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
+            return;
+        }
+        var resSets2 = await axios.post(DOMAIN_SUB2 + "/syncDataClient/false", model);
+        if(resSets2.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
+            return;
+        }
+        var resSets3 = await axios.post(DOMAIN_SUB3 + "/syncDataClient/false", model);
+        if(resSets3.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
+            return;
+        }
+        var resSets4 = await axios.post(DOMAIN_SUB4 + "/syncDataClient/false", model);
+        if(resSets4.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
+            return;
+        }
+        var resSets5 = await axios.post(DOMAIN_SUB5 + "/syncDataClient/false", model);
+        if(resSets5.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
+            return;
+        }
+        var resSets6 = await axios.post(DOMAIN_SUB6 + "/syncDataClient/false", model);
+        if(resSets6.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
+            return;
+        }
+        var resSets7 = await axios.post(DOMAIN_SUB7 + "/syncDataClient/false", model);
+        if(resSets7.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
+            return;
+        }
+        var resSets8 = await axios.post(DOMAIN_SUB8 + "/syncDataClient/false", model);
+        if(resSets8.data.code < 0){
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
+        }
+    }
+    catch(e)
+    {
+        console.log("[ERROR] NOT FIXDATA host /domain not working");
+    }
+    index = 1; 
+}
