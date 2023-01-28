@@ -123,7 +123,6 @@ app.post('/checkUser', jsonParser,function (req, res) {
     var index = arrUser.findIndex(x => x.phone == data.phone);
     if(index > -1)
     {
-        var date = new Date();
         var entity = arrUser[index];
         if(entity.status <= 0)
         {
@@ -137,38 +136,15 @@ app.post('/checkUser', jsonParser,function (req, res) {
     }
 });
 
-//Get All Map
-app.get('/secrect/maps/:signature', function(req, res) {
-    var signature = req.params.signature;
-    var text = "maps";
-    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    if(hash != signature)
-    {
-        return res.status(200).json({msg: "[error] Signature Incorrect!", code: -10 });
-    }
-    res.status(200).json({data: arrMap });
-});
-
-//Delete User
-app.post('/secrect/deleteMap', jsonParser,function (req, res) {
+//Insert User
+app.post('/secrect/insertUser', jsonParser,function (req, res) {
     var data = req.body;
-    var text = data.phone;
-    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    if(hash != data.signature)
+    arrUser = [];
+    if(data.lData != null)
     {
-        return res.status(200).json({msg: "[error] Signature Incorrect!", code: -10 });
+        arrUser.push(data.lData);
     }
-
-    var index = arrMap.findIndex(x => x.phone == data.phone);
-    if(index > -1)
-    {
-        arrMap.slice(index, 1);
-        return res.status(200).json({msg: "success", code: 1 });
-    }
-    else
-    {
-        return res.status(200).json({msg: "[error] User Not Found!", code: -99 }); 
-    }
+    return res.status(200).json({msg: "success", code: 1 });
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -230,5 +206,50 @@ app.post('/sendNotify', jsonParser,function (req, res) {
     {
         return res.status(200).json({msg: "[error] Map Not Found!", code: -99 }); 
     }
+});
+
+//Get All Map
+app.get('/secrect/maps/:signature', function(req, res) {
+    var signature = req.params.signature;
+    var text = "maps";
+    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    if(hash != signature)
+    {
+        return res.status(200).json({msg: "[error] Signature Incorrect!", code: -10 });
+    }
+    res.status(200).json({data: arrMap });
+});
+
+//Delete Map
+app.post('/secrect/deleteMap', jsonParser,function (req, res) {
+    var data = req.body;
+    var text = data.phone;
+    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    if(hash != data.signature)
+    {
+        return res.status(200).json({msg: "[error] Signature Incorrect!", code: -10 });
+    }
+
+    var index = arrMap.findIndex(x => x.phone == data.phone);
+    if(index > -1)
+    {
+        arrMap.slice(index, 1);
+        return res.status(200).json({msg: "success", code: 1 });
+    }
+    else
+    {
+        return res.status(200).json({msg: "[error] User Not Found!", code: -99 }); 
+    }
+});
+
+//Insert Map
+app.post('/secrect/insertMap', jsonParser,function (req, res) {
+    var data = req.body;
+    arrMap = [];
+    if(data.lData != null)
+    {
+        arrMap.push(data.lData);
+    }
+    return res.status(200).json({msg: "success", code: 1 });
 });
 /////////////////////////////////////////////////////////////////////////////////////////////////
