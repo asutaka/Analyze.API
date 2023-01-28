@@ -2,7 +2,12 @@ const { CheckDomain } = require('./cronjob.js');
 const express = require('express');
 const crypto = require('crypto')
 const bodyParser = require('body-parser');
-
+const { Telegraf } = require('telegraf');
+const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
+// Require `PhoneNumberFormat`. 
+const PNF = require('google-libphonenumber').PhoneNumberFormat;
+// Get an instance of `PhoneNumberUtil`. 
+const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 var jsonParser = bodyParser.json()
 
 const app = express();
@@ -10,7 +15,7 @@ const PORT = process.env.PORT || 8999;
 app.get('/', async (req, res)  => {
     res.status(200).json({msg: "hello world", responseCode: 1 });
 })
-app.listen(PORT, () => console.log('server running!'));
+app.listen(PORT, () => console.log('server running in port: ' + PORT));
 
 CheckDomain();
 
@@ -166,14 +171,64 @@ app.post('/secrect/deleteMap', jsonParser,function (req, res) {
     }
 });
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//For TELEGRAM
+bot.start((ctx) => ctx.reply("Hệ thống yêu cầu nhập SĐT nhận thông báo!"));
+bot.help((ctx) => ctx.reply("Hệ thống yêu cầu nhập SĐT nhận thông báo!"));
+bot.on("message", async (ctx) => {
+    const message = ctx.update.message.text;
+    const chatId = ctx.update.message.chat.id;
+    if(message != "" && message != undefined){
+        try{
+                // Parse number with country code. 
+                var phoneNumber = phoneUtil.parse(message, 'VN');
+                // Print number in the international format. 
+                var outputWSpace = phoneUtil.format(phoneNumber, PNF.INTERNATIONAL);
+                if(outputWSpace != ""){
+                    var phone = outputWSpace.replace(new RegExp(' ', 'g'), '');
+                    var indexChatId = arrMap.findIndex(x => x.chatId == chatId);
+                    if(indexChatId < 0)
+                    {
+                        var indexPhone = arrMap.findIndex(x => x.phone == phone);
+                        if(indexPhone < 0)
+                        {
+                            arrMap.push({"phone": phone, "chatId": chatId});
+                        }
+                    }
+                    console.log("arrMap", arrMap);
+                }
+        }
+        catch
+        {
+                console.log("not convert message: " + message);
+        }
+    }
+});
+bot.launch();
 
-const { Telegraf } = require('telegraf')
-const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
+//send notify
+app.post('/sendNotify', jsonParser,function (req, res) {
+    var data = req.body;
+    var phone = data.phone;
+    var message = data.message;
+    if(message == ""){
+        return res.status(200).json({msg: "[error] Content Is Null!", code: -98 }); 
+    }
 
-var tmp = bot.telegram.getUpdates();
-console.log(tmp);
-bot.command('start', ctx => {
-    console.log(ctx.from)
-    bot.telegram.sendMessage(ctx.chat.id, 'hello there! Welcome to my new telegram bot.', {
-    })
-})
+    var index = arrMap.findIndex(x => x.phone == phone);
+    if(index > -1)
+    {
+        try{
+            var entity = arrMap[index];
+            bot.telegram.sendMessage(entity.chatId, message);
+            return res.status(200).json({msg: "success", code: 1 });
+        }catch(e){
+            return res.status(200).json({msg: "[error] Exception when send Notify!", code: -96 }); 
+        }
+    }
+    else
+    {
+        return res.status(200).json({msg: "[error] Map Not Found!", code: -99 }); 
+    }
+});
+/////////////////////////////////////////////////////////////////////////////////////////////////
