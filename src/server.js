@@ -655,331 +655,377 @@ var arrSub = [
     'bswusdt',
     'btcusdt',
     'btsusdt',
-    // 'bttcusdt',
-    // 'burgerusdt',
-    // 'busdusdt',
-    // 'c98usdt',
-    // 'cakeusdt',
-    // 'celousdt',
-    // 'celrusdt',
-    // 'cfxusdt',
-    // 'chessusdt',
-    // 'chrusdt',
-    // 'chzusdt',
-    // 'cityusdt',
-    // 'ckbusdt',
-    // 'clvusdt',
-    // 'cocosusdt',
-    // 'cotiusdt',
-    // 'crvusdt',
-    // 'ctkusdt',
-    // 'ctsiusdt',
-    // 'ctxcusdt',
-    // 'cvpusdt',
-    // 'cvxusdt',
-    // 'darusdt',
-    // 'dashusdt',
-    // 'datausdt',
-    // 'dcrusdt',
-    // 'degousdt',
-    // 'dentusdt',
-    // 'dexeusdt',
-    // 'dfusdt',
-    // 'dgbusdt',
-    // 'diausdt',
-    // 'dockusdt',
-    // 'dodousdt',
-    // 'dogeusdt',
-    // 'dotusdt',
-    // 'drepusdt',
-    // 'duskusdt',
-    // 'dydxusdt',
-    // 'egldusdt',
-    // 'elfusdt',
-    // 'enjusdt',
-    // 'ensusdt',
-    // 'eosusdt',
-    // 'epxusdt',
-    // 'ernusdt',
-    // 'etcusdt',
-    // 'ethusdt',
-    // 'eurusdt',
-    // 'farmusdt',
-    // 'fetusdt',
-    // 'fidausdt',
-    // 'filusdt',
-    // 'fiousdt',
-    // 'firousdt',
-    // 'fisusdt',
-    // 'flmusdt',
-    // 'flowusdt',
-    // 'fluxusdt',
-    // 'forthusdt',
-    // 'forusdt',
-    // 'frontusdt',
-    // 'ftmusdt',
-    // 'funusdt',
-    // 'fxsusdt',
-    // 'galausdt',
-    // 'galusdt',
-    // 'gbpusdt',
-    // 'ghstusdt',
-    // 'glmrusdt',
-    // 'gmtusdt',
-    // 'gmxusdt',
-    // 'gnousdt',
-    // 'grtusdt',
-    // 'gtcusdt',
-    // 'hardusdt',
-    // 'hbarusdt',
-    // 'hftusdt',
-    // 'highusdt',
-    // 'hiveusdt',
-    // 'hookusdt',
-    // 'hotusdt',
-    // 'icpusdt',
-    // 'icxusdt',
-    // 'idexusdt',
-    // 'ilvusdt',
-    // 'imxusdt',
-    // 'injusdt',
-    // 'iostusdt',
-    // 'iotausdt',
-    // 'iotxusdt',
-    // 'irisusdt',
-    // 'jasmyusdt',
-    // 'joeusdt',
-    // 'jstusdt',
-    // 'juvusdt',
-    // 'kavausdt',
-    // 'kdausdt',
-    // 'keyusdt',
-    // 'klayusdt',
-    // 'kmdusdt',
-    // 'kncusdt',
-    // 'kp3rusdt',
-    // 'ksmusdt',
-    // 'laziousdt',
-    // 'ldousdt',
-    // 'leverusdt',
-    // 'linausdt',
-    // 'linkusdt',
-    // 'litusdt',
-    // 'lokausdt',
-    // 'lptusdt',
-    // 'lrcusdt',
-    // 'lskusdt',
-    // 'ltcusdt',
-    // 'ltousdt',
-    // 'lunausdt',
-    // 'luncusdt',
-    // 'magicusdt',
-    // 'manausdt',
-    // 'maskusdt',
-    // 'maticusdt',
-    // 'mblusdt',
-    // 'mboxusdt',
-    // 'mcusdt',
-    // 'mdtusdt',
-    // 'mdxusdt',
-    // 'minausdt',
-    // 'mkrusdt',
-    // 'mlnusdt',
-    // 'mobusdt',
-    // 'movrusdt',
-    // 'mtlusdt',
-    // 'multiusdt',
-    // 'nbtusdt',
-    // 'nearusdt',
-    // 'neblusdt',
-    // 'neousdt',
-    // 'nexousdt',
-    // 'nknusdt',
-    // 'nmrusdt',
-    // 'nulsusdt',
-    // 'oceanusdt',
-    // 'ognusdt',
-    // 'ogusdt',
-    // 'omgusdt',
-    // 'omusdt',
-    // 'oneusdt',
-    // 'ongusdt',
-    // 'ontusdt',
-    // 'ookiusdt',
-    // 'opusdt',
-    // 'ornusdt',
-    // 'osmousdt',
-    // 'oxtusdt',
-    // 'paxgusdt',
-    // 'peopleusdt',
-    // 'perlusdt',
-    // 'perpusdt',
-    // 'phausdt',
-    // 'phbusdt',
-    // 'plausdt',
-    // 'pntusdt',
-    // 'polsusdt',
-    // 'polyxusdt',
-    // 'pondusdt',
-    // 'portousdt',
-    // 'powrusdt',
-    // 'psgusdt',
-    // 'pundixusdt',
-    // 'pyrusdt',
-    // 'qiusdt',
-    // 'qntusdt',
-    // 'qtumusdt',
-    // 'quickusdt',
-    // 'radusdt',
-    // 'rareusdt',
-    // 'rayusdt',
-    // 'reefusdt',
-    // 'reiusdt',
-    // 'renusdt',
-    // 'requsdt',
-    // 'rifusdt',
-    // 'rlcusdt',
-    // 'rndrusdt',
-    // 'roseusdt',
-    // 'rsrusdt',
-    // 'runeusdt',
-    // 'rvnusdt',
-    // 'sandusdt',
-    // 'santosusdt',
-    // 'scrtusdt',
-    // 'scusdt',
-    // 'sfpusdt',
-    // 'shibusdt',
-    // 'sklusdt',
-    // 'slpusdt',
-    // 'snxusdt',
-    // 'solusdt',
-    // 'spellusdt',
-    // 'steemusdt',
-    // 'stgusdt',
-    // 'stmxusdt',
-    // 'storjusdt',
-    // 'stptusdt',
-    // 'straxusdt',
-    // 'stxusdt',
-    // 'sunusdt',
-    // 'superusdt',
-    // 'sushiusdt',
-    // 'sxpusdt',
-    // 'sysusdt',
-    // 'tfuelusdt',
-    // 'thetausdt',
-    // 'tkousdt',
-    // 'tlmusdt',
-    // 'tomousdt',
-    // 'trbusdt',
-    // 'troyusdt',
-    // 'truusdt',
-    // 'trxusdt',
-    // 'tusdt',
-    // 'tvkusdt',
-    // 'twtusdt',
-    // 'umausdt',
-    // 'unfiusdt',
-    // 'uniusdt',
-    // 'utkusdt',
-    // 'vetusdt',
-    // 'vgxusdt',
-    // 'vidtusdt',
-    // 'viteusdt',
-    // 'voxelusdt',
-    // 'vthousdt',
-    // 'wanusdt',
-    // 'wavesusdt',
-    // 'waxpusdt',
-    // 'wingusdt',
-    // 'winusdt',
-    // 'wnxmusdt',
-    // 'woousdt',
-    // 'wrxusdt',
-    // 'wtcusdt',
-    // 'xecusdt',
-    // 'xemusdt',
-    // 'xlmusdt',
-    // 'xmrusdt',
-    // 'xnousdt',
-    // 'xrpusdt',
-    // 'xtzusdt',
-    // 'xvgusdt',
-    // 'xvsusdt',
-    // 'yfiiusdt',
-    // 'yfiusdt',
-    // 'yggusdt',
-    // 'zecusdt',
-    // 'zenusdt',
-    // 'zilusdt',
-    // 'zrxusdt',
+    'bttcusdt',
+    'burgerusdt',
+    'busdusdt',
+    'c98usdt',
+    'cakeusdt',
+    'celousdt',
+    'celrusdt',
+    'cfxusdt',
+    'chessusdt',
+    'chrusdt',
+    'chzusdt',
+    'cityusdt',
+    'ckbusdt',
+    'clvusdt',
+    'cocosusdt',
+    'cotiusdt',
+    'crvusdt',
+    'ctkusdt',
+    'ctsiusdt',
+    'ctxcusdt',
+    'cvpusdt',
+    'cvxusdt',
+    'darusdt',
+    'dashusdt',
+    'datausdt',
+    'dcrusdt',
+    'degousdt',
+    'dentusdt',
+    'dexeusdt',
+    'dfusdt',
+    'dgbusdt',
+    'diausdt',
+    'dockusdt',
+    'dodousdt',
+    'dogeusdt',
+    'dotusdt',
+    'drepusdt',
+    'duskusdt',
+    'dydxusdt',
+    'egldusdt',
+    'elfusdt',
+    'enjusdt',
+    'ensusdt',
+    'eosusdt',
+    'epxusdt',
+    'ernusdt',
+    'etcusdt',
+    'ethusdt',
+    'eurusdt',
+    'farmusdt',
+    'fetusdt',
+    'fidausdt',
+    'filusdt',
+    'fiousdt',
+    'firousdt',
+    'fisusdt',
+    'flmusdt',
+    'flowusdt',
+    'fluxusdt',
+    'forthusdt',
+    'forusdt',
+    'frontusdt',
+    'ftmusdt',
+    'funusdt',
+    'fxsusdt',
+    'galausdt',
+    'galusdt',
+    'gbpusdt',
+    'ghstusdt',
+    'glmrusdt',
+    'gmtusdt',
+    'gmxusdt',
+    'gnousdt',
+    'grtusdt',
+    'gtcusdt',
+    'hardusdt',
+    'hbarusdt',
+    'hftusdt',
+    'highusdt',
+    'hiveusdt',
+    'hookusdt',
+    'hotusdt',
+    'icpusdt',
+    'icxusdt',
+    'idexusdt',
+    'ilvusdt',
+    'imxusdt',
+    'injusdt',
+    'iostusdt',
+    'iotausdt',
+    'iotxusdt',
+    'irisusdt',
+    'jasmyusdt',
+    'joeusdt',
+    'jstusdt',
+    'juvusdt',
+    'kavausdt',
+    'kdausdt',
+    'keyusdt',
+    'klayusdt',
+    'kmdusdt',
+    'kncusdt',
+    'kp3rusdt',
+    'ksmusdt',
+    'laziousdt',
+    'ldousdt',
+    'leverusdt',
+    'linausdt',
+    'linkusdt',
+    'litusdt',
+    'lokausdt',
+    'lptusdt',
+    'lrcusdt',
+    'lskusdt',
+    'ltcusdt',
+    'ltousdt',
+    'lunausdt',
+    'luncusdt',
+    'magicusdt',
+    'manausdt',
+    'maskusdt',
+    'maticusdt',
+    'mblusdt',
+    'mboxusdt',
+    'mcusdt',
+    'mdtusdt',
+    'mdxusdt',
+    'minausdt',
+    'mkrusdt',
+    'mlnusdt',
+    'mobusdt',
+    'movrusdt',
+    'mtlusdt',
+    'multiusdt',
+    'nbtusdt',
+    'nearusdt',
+    'neblusdt',
+    'neousdt',
+    'nexousdt',
+    'nknusdt',
+    'nmrusdt',
+    'nulsusdt',
+    'oceanusdt',
+    'ognusdt',
+    'ogusdt',
+    'omgusdt',
+    'omusdt',
+    'oneusdt',
+    'ongusdt',
+    'ontusdt',
+    'ookiusdt',
+    'opusdt',
+    'ornusdt',
+    'osmousdt',
+    'oxtusdt',
+    'paxgusdt',
+    'peopleusdt',
+    'perlusdt',
+    'perpusdt',
+    'phausdt',
+    'phbusdt',
+    'plausdt',
+    'pntusdt',
+    'polsusdt',
+    'polyxusdt',
+    'pondusdt',
+    'portousdt',
+    'powrusdt',
+    'psgusdt',
+    'pundixusdt',
+    'pyrusdt',
+    'qiusdt',
+    'qntusdt',
+    'qtumusdt',
+    'quickusdt',
+    'radusdt',
+    'rareusdt',
+    'rayusdt',
+    'reefusdt',
+    'reiusdt',
+    'renusdt',
+    'requsdt',
+    'rifusdt',
+    'rlcusdt',
+    'rndrusdt',
+    'roseusdt',
+    'rsrusdt',
+    'runeusdt',
+    'rvnusdt',
+    'sandusdt',
+    'santosusdt',
+    'scrtusdt',
+    'scusdt',
+    'sfpusdt',
+    'shibusdt',
+    'sklusdt',
+    'slpusdt',
+    'snxusdt',
+    'solusdt',
+    'spellusdt',
+    'steemusdt',
+    'stgusdt',
+    'stmxusdt',
+    'storjusdt',
+    'stptusdt',
+    'straxusdt',
+    'stxusdt',
+    'sunusdt',
+    'superusdt',
+    'sushiusdt',
+    'sxpusdt',
+    'sysusdt',
+    'tfuelusdt',
+    'thetausdt',
+    'tkousdt',
+    'tlmusdt',
+    'tomousdt',
+    'trbusdt',
+    'troyusdt',
+    'truusdt',
+    'trxusdt',
+    'tusdt',
+    'tvkusdt',
+    'twtusdt',
+    'umausdt',
+    'unfiusdt',
+    'uniusdt',
+    'utkusdt',
+    'vetusdt',
+    'vgxusdt',
+    'vidtusdt',
+    'viteusdt',
+    'voxelusdt',
+    'vthousdt',
+    'wanusdt',
+    'wavesusdt',
+    'waxpusdt',
+    'wingusdt',
+    'winusdt',
+    'wnxmusdt',
+    'woousdt',
+    'wrxusdt',
+    'wtcusdt',
+    'xecusdt',
+    'xemusdt',
+    'xlmusdt',
+    'xmrusdt',
+    'xnousdt',
+    'xrpusdt',
+    'xtzusdt',
+    'xvgusdt',
+    'xvsusdt',
+    'yfiiusdt',
+    'yfiusdt',
+    'yggusdt',
+    'zecusdt',
+    'zenusdt',
+    'zilusdt',
+    'zrxusdt',
 ];
 
 app.post('/secrect/fillData', jsonParser,function (req, res) {
-    // var data = req.body;
-    // var text = "fillData";
-    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    // if(hash != data.signature)
-    // {
-    //     return res.status(200).json({msg: "[error] Signature Incorrect!", code: -10 });
-    // }
-    FixData();
+    var data = req.body;
+    var text = "fillData";
+    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    if(hash != data.signature)
+    {
+        return res.status(200).json({msg: "[error] Signature Incorrect!", code: -10 });
+    }
+    FixData(data.mode);
     return res.status(200).json({msg: "success", code: 1 });
 });
 
 var index = 1;
-async function FixData() {
+async function FixData(mode) {
     try {
+        var arr = [];
+        if(mode == 0)
+            arr = arrSub;
+        else if(mode == 1)
+            arr = arrSub1;
+        else if(mode == 2)
+            arr = arrSub2;
+        else if(mode == 3)
+            arr = arrSub3;
+        else if(mode == 4)
+            arr = arrSub4;
+        else if(mode == 5)
+            arr = arrSub5;
+        else if(mode == 6)
+            arr = arrSub6;
+        else if(mode == 7)
+            arr = arrSub7;
+        else if(mode == 8)
+            arr = arrSub8;
+
         index = 1; 
-        var resSet1 = await axios.post(DOMAIN_SUB1 + "/syncDataClient/true", model);
-        if(resSet1.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 1)
+        {
+            var resSet1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/true");
+            if(resSet1.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
+                return;
+            }
         }
-        var resSet2 = await axios.post(DOMAIN_SUB2 + "/syncDataClient/true", model);
-        if(resSet2.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 2)
+        {
+            var resSet2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/true");
+            if(resSet2.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
+                return;
+            }
         }
-        var resSet3 = await axios.post(DOMAIN_SUB3 + "/syncDataClient/true", model);
-        if(resSet3.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 3)
+        {
+            var resSet3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/true");
+            if(resSet3.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
+                return;
+            }
         }
-        var resSet4 = await axios.post(DOMAIN_SUB4 + "/syncDataClient/true", model);
-        if(resSet4.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 4)
+        {
+            var resSet4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/true");
+            if(resSet4.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
+                return;
+            }
         }
-        var resSet5 = await axios.post(DOMAIN_SUB5 + "/syncDataClient/true", model);
-        if(resSet5.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 5)
+        {
+            var resSet5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/true");
+            if(resSet5.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
+                return;
+            }
         }
-        var resSet6 = await axios.post(DOMAIN_SUB6 + "/syncDataClient/true", model);
-        if(resSet6.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 6)
+        {
+            var resSet6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/true");
+            if(resSet6.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
+                return;
+            }
         }
-        var resSet7 = await axios.post(DOMAIN_SUB7 + "/syncDataClient/true", model);
-        if(resSet7.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 7)
+        {
+            var resSet7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/true");
+            if(resSet7.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
+                return;
+            }
         }
-        var resSet8 = await axios.post(DOMAIN_SUB8 + "/syncDataClient/true", model);
-        if(resSet8.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
-            return;
+        if(mode == 0 || mode == 8)
+        {
+            var resSet8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/true");
+            if(resSet8.data.code < 0){
+                //send tele
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
+                return;
+            }
         }
+        var time = new Date();
+        var updateTime = time.getTime();
 
         const sleep = ms =>
         new Promise(res => {
@@ -1001,10 +1047,8 @@ async function FixData() {
 
                 let arrInsert = [];
                 var symbol = num.toUpperCase();
-                console.log(index, symbol);
-                axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=300").then(async (response) => {
+                axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=200").then(async (response) => {
                     response.data.forEach((item) => {
-                        console.log(item);
                         arrInsert.push({name: symbol, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
                     }); 
                     if(arrInsert.length > 0)
@@ -1053,8 +1097,8 @@ async function FixData() {
                         }
 
                         var model = { num: num, data:  arrInsert}
-                        var resInsert = await axios.post(DM + "/syncDataClientVal", model);
-                        console.log("resInsert", resInsert.data);
+                        var resInsert = await axios.post(DM + "syncDataClientVal", model);
+                        console.log("resInsert:", num, resInsert.data);
 
                         if(index == 1 && index1 < 0)
                         {
@@ -1113,54 +1157,54 @@ async function FixData() {
             }
         }
 
-        forEachSeries(arrSub, myPromise)
+        forEachSeries(arr, myPromise)
         .then(() => {
             bot.telegram.sendMessage(CHAT_ID, "SynData ALL Domain success!");
             console.log('all done!')
         })
-        var resSets1 = await axios.post(DOMAIN_SUB1 + "/syncDataClient/false", model);
+        var resSets1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/false");
         if(resSets1.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
             return;
         }
-        var resSets2 = await axios.post(DOMAIN_SUB2 + "/syncDataClient/false", model);
+        var resSets2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/false");
         if(resSets2.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
             return;
         }
-        var resSets3 = await axios.post(DOMAIN_SUB3 + "/syncDataClient/false", model);
+        var resSets3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/false");
         if(resSets3.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
             return;
         }
-        var resSets4 = await axios.post(DOMAIN_SUB4 + "/syncDataClient/false", model);
+        var resSets4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/false");
         if(resSets4.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
             return;
         }
-        var resSets5 = await axios.post(DOMAIN_SUB5 + "/syncDataClient/false", model);
+        var resSets5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/false");
         if(resSets5.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
             return;
         }
-        var resSets6 = await axios.post(DOMAIN_SUB6 + "/syncDataClient/false", model);
+        var resSets6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/false");
         if(resSets6.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
             return;
         }
-        var resSets7 = await axios.post(DOMAIN_SUB7 + "/syncDataClient/false", model);
+        var resSets7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/false");
         if(resSets7.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
             return;
         }
-        var resSets8 = await axios.post(DOMAIN_SUB8 + "/syncDataClient/false", model);
+        var resSets8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/false");
         if(resSets8.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
