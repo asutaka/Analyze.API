@@ -150,10 +150,14 @@ app.post('/checkUser', jsonParser,function (req, res) {
 //Insert User
 app.post('/secrect/insertUser', jsonParser,function (req, res) {
     var data = req.body;
-    arrUser = [];
-    if(data.lData != null)
+    if(data.lData != null && data.lData.length > 0)
     {
+        arrUser = [];
         arrUser.push(data.lData);
+    }
+    if(data.data != null)
+    {
+        arrUser.push(data.data);
     }
     return res.status(200).json({msg: "success", code: 1 });
 });
