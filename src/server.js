@@ -84,7 +84,7 @@ app.post('/updatePassword', jsonParser,function (req, res) {
             return res.status(200).json({msg: "[error] Status is inactive!", code: -10 });
         }
 
-        var model = { phone: data.phone, password: data.password, createdtime: entity.createdtime, updatedtime: date.getTime(), status: entity.status };
+        var model = { _id: entity._id, phone: data.phone, password: data.password, createdtime: entity.createdtime, updatedtime: date.getTime(), status: entity.status };
         arrUser.slice(index, 1);
         arrUser.push(model);
         return res.status(200).json({msg: "success", code: 1 });
@@ -110,7 +110,7 @@ app.post('/secrect/updateStatus', jsonParser,function (req, res) {
     {
         var date = new Date();
         var entity = arrUser[index];
-        var model = { phone: data.phone, password: entity.password, createdtime: entity.createdtime, updatedtime: date.getTime(), status: data.status };
+        var model = { _id: entity._id, phone: data.phone, password: entity.password, createdtime: entity.createdtime, updatedtime: date.getTime(), status: data.status };
         arrUser.slice(index, 1);
         arrUser.push(model);
         return res.status(200).json({msg: "success", code: 1 });
@@ -260,9 +260,9 @@ app.post('/secrect/deleteMap', jsonParser,function (req, res) {
 //Insert Map
 app.post('/secrect/insertMap', jsonParser,function (req, res) {
     var data = req.body;
-    arrMap = [];
     if(data.lData != null)
     {
+        arrMap = [];
         arrMap.push(data.lData);
     }
     return res.status(200).json({msg: "success", code: 1 });
@@ -1051,7 +1051,7 @@ async function FixData(mode) {
 
                 let arrInsert = [];
                 var symbol = num.toUpperCase();
-                axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=200").then(async (response) => {
+                axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500").then(async (response) => {
                     response.data.forEach((item) => {
                         arrInsert.push({name: symbol, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
                     }); 
