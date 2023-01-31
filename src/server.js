@@ -33,7 +33,7 @@ CheckDomain();
 let arrUser = [];
 let arrMap = [];
 //Get All User
-app.get('/secrect/users/:signature', function(req, res) {
+app.get('/secret/users/:signature', function(req, res) {
     var signature = req.params.signature;
     var text = "users";
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
@@ -44,7 +44,7 @@ app.get('/secrect/users/:signature', function(req, res) {
     res.status(200).json({data: arrUser });
 });
 //Delete User
-app.post('/secrect/deleteUser', jsonParser,function (req, res) {
+app.post('/secret/deleteUser', jsonParser,function (req, res) {
     var data = req.body;
     var text = data.phone;
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
@@ -96,7 +96,7 @@ app.post('/updatePassword', jsonParser,function (req, res) {
 });
 
 //Update Status
-app.post('/secrect/updateStatus', jsonParser,function (req, res) {
+app.post('/secret/updateStatus', jsonParser,function (req, res) {
     var data = req.body;
     var text = data.phone+data.status;
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
@@ -148,7 +148,7 @@ app.post('/checkUser', jsonParser,function (req, res) {
 });
 
 //Insert User
-app.post('/secrect/insertUser', jsonParser,function (req, res) {
+app.post('/secret/insertUser', jsonParser,function (req, res) {
     var data = req.body;
     if(data.lData != null && data.lData.length > 0)
     {
@@ -224,7 +224,7 @@ app.post('/sendNotify', jsonParser,function (req, res) {
 });
 
 //Get All Map
-app.get('/secrect/maps/:signature', function(req, res) {
+app.get('/secret/maps/:signature', function(req, res) {
     var signature = req.params.signature;
     var text = "maps";
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
@@ -236,7 +236,7 @@ app.get('/secrect/maps/:signature', function(req, res) {
 });
 
 //Delete Map
-app.post('/secrect/deleteMap', jsonParser,function (req, res) {
+app.post('/secret/deleteMap', jsonParser,function (req, res) {
     var data = req.body;
     var text = data.phone;
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
@@ -258,7 +258,7 @@ app.post('/secrect/deleteMap', jsonParser,function (req, res) {
 });
 
 //Insert Map
-app.post('/secrect/insertMap', jsonParser,function (req, res) {
+app.post('/secret/insertMap', jsonParser,function (req, res) {
     var data = req.body;
     if(data.lData != null)
     {
@@ -920,7 +920,7 @@ var arrSub = [
     'zrxusdt',
 ];
 
-app.post('/secrect/fillData', jsonParser,function (req, res) {
+app.post('/secret/fillData', jsonParser,function (req, res) {
     var data = req.body;
     var text = "fillData";
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
