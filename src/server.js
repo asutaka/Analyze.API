@@ -14,7 +14,8 @@ const DOMAIN_SUB7 = "https://asutakayahoo-subcribe7.onrender.com/";
 const DOMAIN_SUB8 = "https://asutakayahoo-subcribe8.onrender.com/";
 const CHAT_ID = 1828525662;
 
-const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
+// const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
+const bot = new Telegraf('5026250022:AAHr5fqu1P5C00f1O_m5SeC5qcrFbSFO7F0');
 // Require `PhoneNumberFormat`. 
 const PNF = require('google-libphonenumber').PhoneNumberFormat;
 // Get an instance of `PhoneNumberUtil`. 
@@ -56,7 +57,7 @@ app.post('/secret/deleteUser', jsonParser,function (req, res) {
     var index = arrUser.findIndex(x => x.phone == data.phone);
     if(index > -1)
     {
-        arrUser.slice(index, 1);
+        arrUser.splice(index, 1);
         return res.status(200).json({msg: "success", code: 1 });
     }
     else
@@ -77,16 +78,13 @@ app.post('/updatePassword', jsonParser,function (req, res) {
     var index = arrUser.findIndex(x => x.phone == data.phone);
     if(index > -1)
     {
-        var date = new Date();
         var entity = arrUser[index];
         if(entity.status <= 0)
         {
             return res.status(200).json({msg: "[API-ERROR] Status is inactive!", code: -300 });
         }
-
-        var model = { _id: entity._id, phone: data.phone, password: data.password, createdtime: entity.createdtime, updatedtime: date.getTime(), status: entity.status };
-        arrUser.slice(index, 1);
-        arrUser.push(model);
+        arrUser[index].password = data.password;
+        arrUser[index].updatedtime = (new Date()).getTime();
         return res.status(200).json({msg: "success", code: 1 });
     }
     else
@@ -108,11 +106,8 @@ app.post('/secret/updateStatus', jsonParser,function (req, res) {
     var index = arrUser.findIndex(x => x.phone == data.phone);
     if(index > -1)
     {
-        var date = new Date();
-        var entity = arrUser[index];
-        var model = { _id: entity._id, phone: data.phone, password: entity.password, createdtime: entity.createdtime, updatedtime: date.getTime(), status: data.status };
-        arrUser.slice(index, 1);
-        arrUser.push(model);
+        arrUser[index].status = data.status;
+        arrUser[index].updatedtime = (new Date()).getTime();
         return res.status(200).json({msg: "success", code: 1 });
     }
     else
@@ -248,7 +243,7 @@ app.post('/secret/deleteMap', jsonParser,function (req, res) {
     var index = arrMap.findIndex(x => x.phone == data.phone);
     if(index > -1)
     {
-        arrMap.slice(index, 1);
+        arrMap.splice(index, 1);
         return res.status(200).json({msg: "success", code: 1 });
     }
     else
