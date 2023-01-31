@@ -28,7 +28,6 @@ app.get('/', async (req, res)  => {
     res.status(200).json({msg: "hello world", responseCode: 1 });
 })
 app.listen(PORT, () => console.log('server running in port: ' + PORT));
-
 CheckDomain();
 
 let arrUser = [];
