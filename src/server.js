@@ -39,7 +39,7 @@ app.get('/secrect/users/:signature', function(req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
     res.status(200).json({data: arrUser });
 });
@@ -50,7 +50,7 @@ app.post('/secrect/deleteUser', jsonParser,function (req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != data.signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
 
     var index = arrUser.findIndex(x => x.phone == data.phone);
@@ -61,7 +61,7 @@ app.post('/secrect/deleteUser', jsonParser,function (req, res) {
     }
     else
     {
-        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -99 }); 
+        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -600 }); 
     }
 });
 //Update Password
@@ -71,7 +71,7 @@ app.post('/updatePassword', jsonParser,function (req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != data.signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
 
     var index = arrUser.findIndex(x => x.phone == data.phone);
@@ -81,7 +81,7 @@ app.post('/updatePassword', jsonParser,function (req, res) {
         var entity = arrUser[index];
         if(entity.status <= 0)
         {
-            return res.status(200).json({msg: "[API-ERROR] Status is inactive!", code: -10 });
+            return res.status(200).json({msg: "[API-ERROR] Status is inactive!", code: -300 });
         }
 
         var model = { _id: entity._id, phone: data.phone, password: data.password, createdtime: entity.createdtime, updatedtime: date.getTime(), status: entity.status };
@@ -91,7 +91,7 @@ app.post('/updatePassword', jsonParser,function (req, res) {
     }
     else
     {
-        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -99 });
+        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -600 });
     }
 });
 
@@ -102,7 +102,7 @@ app.post('/secrect/updateStatus', jsonParser,function (req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != data.signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
 
     var index = arrUser.findIndex(x => x.phone == data.phone);
@@ -117,7 +117,7 @@ app.post('/secrect/updateStatus', jsonParser,function (req, res) {
     }
     else
     {
-        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -99 });
+        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -600 });
     }
 });
 
@@ -128,7 +128,7 @@ app.post('/checkUser', jsonParser,function (req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != data.signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
 
     var index = arrUser.findIndex(x => x.phone == data.phone);
@@ -137,13 +137,13 @@ app.post('/checkUser', jsonParser,function (req, res) {
         var entity = arrUser[index];
         if(entity.status <= 0)
         {
-            return res.status(200).json({msg: "[API-ERROR] Status is inactive!", code: -10 });
+            return res.status(200).json({msg: "[API-ERROR] Status is inactive!", code: -300 });
         }
         return res.status(200).json({msg: "success", code: 1 });
     }
     else
     {
-        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -99 });
+        return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -600 });
     }
 });
 
@@ -203,7 +203,7 @@ app.post('/sendNotify', jsonParser,function (req, res) {
     var phone = data.phone;
     var message = data.message;
     if(message == ""){
-        return res.status(200).json({msg: "[API-ERROR] Content Is Null!", code: -98 }); 
+        return res.status(200).json({msg: "[API-ERROR] Content Is Null!", code: -400 }); 
     }
 
     var index = arrMap.findIndex(x => x.phone == phone);
@@ -214,12 +214,12 @@ app.post('/sendNotify', jsonParser,function (req, res) {
             bot.telegram.sendMessage(entity.chatId, message);
             return res.status(200).json({msg: "success", code: 1 });
         }catch(e){
-            return res.status(200).json({msg: "[API-ERROR] Exception when send Notify!", code: -96 }); 
+            return res.status(200).json({msg: "[API-ERROR] Exception when send Notify!", code: -800 }); 
         }
     }
     else
     {
-        return res.status(200).json({msg: "[API-ERROR] Map Not Found!", code: -99 }); 
+        return res.status(200).json({msg: "[API-ERROR] Map Not Found!", code: -600 }); 
     }
 });
 
@@ -230,7 +230,7 @@ app.get('/secrect/maps/:signature', function(req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
     res.status(200).json({data: arrMap });
 });
@@ -242,7 +242,7 @@ app.post('/secrect/deleteMap', jsonParser,function (req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != data.signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
 
     var index = arrMap.findIndex(x => x.phone == data.phone);
@@ -253,7 +253,7 @@ app.post('/secrect/deleteMap', jsonParser,function (req, res) {
     }
     else
     {
-        return res.status(200).json({msg: "[API-ERROR] Map Not Found!", code: -99 }); 
+        return res.status(200).json({msg: "[API-ERROR] Map Not Found!", code: -600 }); 
     }
 });
 
@@ -926,7 +926,7 @@ app.post('/secrect/fillData', jsonParser,function (req, res) {
     let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
     if(hash != data.signature)
     {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -10 });
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
     FixData(data.mode);
     return res.status(200).json({msg: "success", code: 1 });
