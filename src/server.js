@@ -147,7 +147,7 @@ app.post('/secret/insertUser', jsonParser,function (req, res) {
     if(data.lData != null && data.lData.length > 0)
     {
         arrUser = [];
-        arrUser.push(data.lData);
+        arrUser = data.lData;
     }
     if(data.data != null)
     {
@@ -257,7 +257,7 @@ app.post('/secret/insertMap', jsonParser,function (req, res) {
     if(data.lData != null)
     {
         arrMap = [];
-        arrMap.push(data.lData);
+        arrMap = data.lData;
     }
     return res.status(200).json({msg: "success", code: 1 });
 });
