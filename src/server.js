@@ -1,4 +1,4 @@
-const { CheckDomain } = require('./cronjob.js');
+const { CheckDomain1, CheckDomain2, CheckDomain3, CheckDomain4 } = require('./cronjob.js');
 const express = require('express');
 const crypto = require('crypto')
 const bodyParser = require('body-parser');
@@ -14,8 +14,8 @@ const DOMAIN_SUB7 = "https://asutakayahoo-subcribe7.onrender.com/";
 const DOMAIN_SUB8 = "https://asutakayahoo-subcribe8.onrender.com/";
 const CHAT_ID = 1828525662;
 
-// const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
-const bot = new Telegraf('5026250022:AAHr5fqu1P5C00f1O_m5SeC5qcrFbSFO7F0');
+const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
+// const bot = new Telegraf('5026250022:AAHr5fqu1P5C00f1O_m5SeC5qcrFbSFO7F0');
 // Require `PhoneNumberFormat`. 
 const PNF = require('google-libphonenumber').PhoneNumberFormat;
 // Get an instance of `PhoneNumberUtil`. 
@@ -28,7 +28,10 @@ app.get('/', async (req, res)  => {
     res.status(200).json({msg: "hello world", responseCode: 1 });
 })
 app.listen(PORT, () => console.log('server running in port: ' + PORT));
-CheckDomain();
+CheckDomain1();
+CheckDomain2();
+CheckDomain3();
+CheckDomain4();
 
 let arrUser = [];
 let arrMap = [];
