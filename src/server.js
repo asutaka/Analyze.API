@@ -955,8 +955,13 @@ async function FixData(mode) {
         index = 1; 
         if(mode == 0 || mode == 1)
         {
-            var resSet1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/true");
-            if(resSet1.data.code < 0){
+            var resSet1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB1 + "syncDataClient/true");
+                return;
+            });
+            if(resSet1 != null && resSet1.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
                 return;
@@ -964,8 +969,13 @@ async function FixData(mode) {
         }
         if(mode == 0 || mode == 2)
         {
-            var resSet2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/true");
-            if(resSet2.data.code < 0){
+            var resSet2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB2 + "syncDataClient/true");
+                return;
+            });
+            if(resSet2 != null && resSet2.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
                 return;
@@ -973,8 +983,13 @@ async function FixData(mode) {
         }
         if(mode == 0 || mode == 3)
         {
-            var resSet3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/true");
-            if(resSet3.data.code < 0){
+            var resSet3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB3 + "syncDataClient/true");
+                return;
+            });
+            if(resSet3 != null && resSet3.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
                 return;
@@ -982,8 +997,13 @@ async function FixData(mode) {
         }
         if(mode == 0 || mode == 4)
         {
-            var resSet4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/true");
-            if(resSet4.data.code < 0){
+            var resSet4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB4 + "syncDataClient/true");
+                return;
+            });
+            if(resSet4 != null && resSet4.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
                 return;
@@ -991,8 +1011,13 @@ async function FixData(mode) {
         }
         if(mode == 0 || mode == 5)
         {
-            var resSet5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/true");
-            if(resSet5.data.code < 0){
+            var resSet5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB5 + "syncDataClient/true");
+                return;
+            });
+            if(resSet5 != null && resSet5.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
                 return;
@@ -1000,8 +1025,13 @@ async function FixData(mode) {
         }
         if(mode == 0 || mode == 6)
         {
-            var resSet6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/true");
-            if(resSet6.data.code < 0){
+            var resSet6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB6 + "syncDataClient/true");
+                return;
+            });
+            if(resSet6 != null && resSet6.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
                 return;
@@ -1009,8 +1039,13 @@ async function FixData(mode) {
         }
         if(mode == 0 || mode == 7)
         {
-            var resSet7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/true");
-            if(resSet7.data.code < 0){
+            var resSet7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB7 + "syncDataClient/true");
+                return;
+            });
+            if(resSet7 != null && resSet7.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
                 return;
@@ -1018,8 +1053,13 @@ async function FixData(mode) {
         }
         if(mode == 0 || mode == 8)
         {
-            var resSet8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/true");
-            if(resSet8.data.code < 0){
+            var resSet8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/true")
+            .catch(function (error) {
+                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
+                console.log("Exception when call: " + DOMAIN_SUB8 + "syncDataClient/true");
+                return;
+            });
+            if(resSet8 != null && resSet8.data.code < 0){
                 //send tele
                 bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
                 return;
@@ -1098,8 +1138,14 @@ async function FixData(mode) {
                         }
 
                         var model = { num: num, data:  arrInsert}
-                        var resInsert = await axios.post(DM + "syncDataClientVal", model);
-                        console.log("resInsert:", num, resInsert.data);
+                        var resInsert = await axios.post(DM + "syncDataClientVal", model)
+                        .catch(function (error) {
+                            console.log("Exception when call: " + DM + "syncDataClientVal");
+                        });
+                        if(resInsert != null)
+                        {
+                            console.log("resInsert:", num, resInsert.data);
+                        }
 
                         if(index == 1 && index1 < 0)
                         {
@@ -1144,6 +1190,9 @@ async function FixData(mode) {
                             index = 8; 
                         }
                     }
+                })
+                .catch(function (error) {
+                    console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500");
                 });
             }
             catch(ex)
@@ -1163,50 +1212,90 @@ async function FixData(mode) {
             bot.telegram.sendMessage(CHAT_ID, "SynData ALL Domain success!");
             console.log('all done!')
         })
-        var resSets1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/false");
-        if(resSets1.data.code < 0){
+        var resSets1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB1 + "syncDataClient/true");
+            return;
+        });
+        if(resSet1 != null && resSets1.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
             return;
         }
-        var resSets2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/false");
-        if(resSets2.data.code < 0){
+        var resSets2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB2 + "syncDataClient/true");
+            return;
+        });
+        if(resSet2 != null && resSets2.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
             return;
         }
-        var resSets3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/false");
-        if(resSets3.data.code < 0){
+        var resSets3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB3 + "syncDataClient/true");
+            return;
+        });
+        if(resSet3 != null && resSets3.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
             return;
         }
-        var resSets4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/false");
-        if(resSets4.data.code < 0){
+        var resSets4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB4 + "syncDataClient/true");
+            return;
+        });
+        if(resSet4 != null && resSets4.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
             return;
         }
-        var resSets5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/false");
-        if(resSets5.data.code < 0){
+        var resSets5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB5 + "syncDataClient/true");
+            return;
+        });
+        if(resSet5 != null && resSets5.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
             return;
         }
-        var resSets6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/false");
-        if(resSets6.data.code < 0){
+        var resSets6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB6 + "syncDataClient/true");
+            return;
+        });
+        if(resSet6 != null && resSets6.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
             return;
         }
-        var resSets7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/false");
-        if(resSets7.data.code < 0){
+        var resSets7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB7 + "syncDataClient/true");
+            return;
+        });
+        if(resSet7 != null && resSets7.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
             return;
         }
-        var resSets8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/false");
-        if(resSets8.data.code < 0){
+        var resSets8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/false")
+        .catch(function (error) {
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
+            console.log("Exception when call: " + DOMAIN_SUB8 + "syncDataClient/true");
+            return;
+        });
+        if(resSet8 != null && resSets8.data.code < 0){
             //send tele
             bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
         }
