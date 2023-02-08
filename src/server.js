@@ -914,152 +914,46 @@ var arrSub = [
 
 app.post('/secret/fillData', jsonParser,function (req, res) {
     var data = req.body;
-    var text = "fillData";
-    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    // if(hash != data.signature)
-    // {
-    //     return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
-    // }
-    FixData(data.mode);
+    if(data.mode <= 0 || data.mode == 1)
+    {
+        FixData(arrSub1, DOMAIN_SUB1);
+    }
+    if(data.mode <= 0 || data.mode == 2)
+    {
+        FixData(arrSub2, DOMAIN_SUB2);
+    }
+    if(data.mode <= 0 || data.mode == 3)
+    {
+        FixData(arrSub3, DOMAIN_SUB3);
+    }
+    if(data.mode <= 0 || data.mode == 4)
+    {
+        FixData(arrSub4, DOMAIN_SUB4);
+    }
+    if(data.mode <= 0 || data.mode == 5)
+    {
+        FixData(arrSub5, DOMAIN_SUB5);
+    }
+    if(data.mode <= 0 || data.mode == 6)
+    {
+        FixData(arrSub6, DOMAIN_SUB6);
+    }
+    if(data.mode <= 0 || data.mode == 7)
+    {
+        FixData(arrSub7, DOMAIN_SUB7);
+    }
+    if(data.mode <= 0 || data.mode == 8)
+    {
+        FixData(arrSub8, DOMAIN_SUB8);
+    }
+   
     return res.status(200).json({msg: "success", code: 1 });
 });
 
 var index = 1;
-async function FixData(mode) {
+async function FixData(arr, DOMAIN) {
     try {
-        var arr = [];
-        if(mode == 0)
-            arr = arrSub;
-        else if(mode == 1)
-            arr = arrSub1;
-        else if(mode == 2)
-            arr = arrSub2;
-        else if(mode == 3)
-            arr = arrSub3;
-        else if(mode == 4)
-            arr = arrSub4;
-        else if(mode == 5)
-            arr = arrSub5;
-        else if(mode == 6)
-            arr = arrSub6;
-        else if(mode == 7)
-            arr = arrSub7;
-        else if(mode == 8)
-            arr = arrSub8;
-
         index = 1; 
-        if(mode == 0 || mode == 1)
-        {
-            var resSet1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB1 + "syncDataClient/true");
-                return;
-            });
-            if(resSet1 != null && resSet1.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
-                return;
-            }
-        }
-        if(mode == 0 || mode == 2)
-        {
-            var resSet2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB2 + "syncDataClient/true");
-                return;
-            });
-            if(resSet2 != null && resSet2.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
-                return;
-            }
-        }
-        if(mode == 0 || mode == 3)
-        {
-            var resSet3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB3 + "syncDataClient/true");
-                return;
-            });
-            if(resSet3 != null && resSet3.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
-                return;
-            }
-        }
-        if(mode == 0 || mode == 4)
-        {
-            var resSet4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB4 + "syncDataClient/true");
-                return;
-            });
-            if(resSet4 != null && resSet4.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
-                return;
-            }
-        }
-        if(mode == 0 || mode == 5)
-        {
-            var resSet5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB5 + "syncDataClient/true");
-                return;
-            });
-            if(resSet5 != null && resSet5.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
-                return;
-            }
-        }
-        if(mode == 0 || mode == 6)
-        {
-            var resSet6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB6 + "syncDataClient/true");
-                return;
-            });
-            if(resSet6 != null && resSet6.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
-                return;
-            }
-        }
-        if(mode == 0 || mode == 7)
-        {
-            var resSet7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB7 + "syncDataClient/true");
-                return;
-            });
-            if(resSet7 != null && resSet7.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
-                return;
-            }
-        }
-        if(mode == 0 || mode == 8)
-        {
-            var resSet8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/true")
-            .catch(function (error) {
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
-                console.log("Exception when call: " + DOMAIN_SUB8 + "syncDataClient/true");
-                return;
-            });
-            if(resSet8 != null && resSet8.data.code < 0){
-                //send tele
-                bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
-                return;
-            }
-        }
         var time = new Date();
         var updateTime = time.getTime();
 
@@ -1072,15 +966,7 @@ async function FixData(mode) {
         sleep(5000).then(async () => {
             //bổ sung bản ghi call từ Binance
             try{
-                var index1 = arrSub1.findIndex(x => x == num);
-                var index2 = arrSub2.findIndex(x => x == num);
-                var index3 = arrSub3.findIndex(x => x == num);
-                var index4 = arrSub4.findIndex(x => x == num);
-                var index5 = arrSub5.findIndex(x => x == num);
-                var index6 = arrSub6.findIndex(x => x == num);
-                var index7 = arrSub7.findIndex(x => x == num);
-                var index8 = arrSub8.findIndex(x => x == num);
-
+                var index = arr.findIndex(x => x == num);
                 let arrInsert = [];
                 var symbol = num.toUpperCase();
                 axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500").then(async (response) => {
@@ -1089,105 +975,33 @@ async function FixData(mode) {
                     }); 
                     if(arrInsert.length > 0)
                     {
-                        var num = 0;
-                        var DM = "";
-                        if(index1 >= 0)
-                        {
-                            num = index1 + 1;
-                            DM = DOMAIN_SUB1;
-                        }
-                        else if(index2 >= 0)
-                        {
-                            num = index2 + 1;
-                            DM = DOMAIN_SUB2;
-                        }
-                        else if(index3 >= 0)
-                        {
-                            num = index3 + 1;
-                            DM = DOMAIN_SUB3;
-                        }
-                        else if(index4 >= 0)
-                        {
-                            num = index4 + 1;
-                            DM = DOMAIN_SUB4;
-                        }
-                        else if(index5 >= 0)
-                        {
-                            num = index5 + 1;
-                            DM = DOMAIN_SUB5;
-                        }
-                        else if(index6 >= 0)
-                        {
-                            num = index6 + 1;
-                            DM = DOMAIN_SUB6;
-                        }
-                        else if(index7 >= 0)
-                        {
-                            num = index7 + 1;
-                            DM = DOMAIN_SUB7;
-                        }
-                        else if(index8 >= 0)
-                        {
-                            num = index8 + 1;
-                            DM = DOMAIN_SUB8;
-                        }
-
-                        var model = { num: num, data:  arrInsert}
-                        var resInsert = await axios.post(DM + "syncDataClientVal", model)
+                        var model = { num: index + 1, data:  arrInsert}
+                        var resInsert = await axios.post(DOMAIN + "syncDataClientVal", model)
                         .catch(function (error) {
-                            console.log("Exception when call: " + DM + "syncDataClientVal");
+                            console.log("Exception when call: " + DOMAIN + "syncDataClientVal");
+                            try{
+                                bot.telegram.sendMessage(CHAT_ID, "Exception: " + num);
+                            }
+                            catch(eTele)
+                            {
+                                console.log("Exception when call: " + DOMAIN + "syncDataClientVal(SendTelegram)");
+                            }
                         });
                         if(resInsert != null)
                         {
-                            console.log("resInsert:", num, resInsert.data);
-                        }
-
-                        if(index == 1 && index1 < 0)
-                        {
-                            //send tele
-                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": SynData success!");
-                            index = 2; 
-                        }
-                        else if(index == 2 && index2 < 0)
-                        {
-                            //send tele
-                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": SynData success!");
-                            index = 3; 
-                        }
-                        else if(index == 3 && index3 < 0)
-                        {
-                            //send tele
-                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": SynData success!");
-                            index = 4; 
-                        }
-                        else if(index == 4 && index4 < 0)
-                        {
-                            //send tele
-                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": SynData success!");
-                            index = 5; 
-                        }
-                        else if(index == 5 && index5 < 0)
-                        {
-                            //send tele
-                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": SynData success!");
-                            index = 6; 
-                        }
-                        else if(index == 6 && index6 < 0)
-                        {
-                            //send tele
-                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": SynData success!");
-                            index = 7; 
-                        }
-                        else if(index == 7 && index7 < 0)
-                        {
-                            //send tele
-                            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": SynData success!");
-                            index = 8; 
+                            console.log("resInsert:", num, resInsert.data, arrInsert.length);
                         }
                     }
                 })
                 .catch(function (error) {
                     console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500");
+                    try{
+                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + num);
+                    }
+                    catch(eTele)
+                    {
+                        console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500(SendTelegram)");
+                    }
                 });
             }
             catch(ex)
@@ -1204,100 +1018,13 @@ async function FixData(mode) {
 
         forEachSeries(arr, myPromise)
         .then(() => {
-            bot.telegram.sendMessage(CHAT_ID, "SynData ALL Domain success!");
             console.log('all done!')
+            //send tele
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN + ": SynData success!");
         })
-        var resSets1 = await axios.post(DOMAIN_SUB1 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB1 + "syncDataClient/true");
-            return;
-        });
-        if(resSet1 != null && resSets1.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB1 + ": Cannot set flag!");
-            return;
-        }
-        var resSets2 = await axios.post(DOMAIN_SUB2 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB2 + "syncDataClient/true");
-            return;
-        });
-        if(resSet2 != null && resSets2.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB2 + ": Cannot set flag!");
-            return;
-        }
-        var resSets3 = await axios.post(DOMAIN_SUB3 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB3 + "syncDataClient/true");
-            return;
-        });
-        if(resSet3 != null && resSets3.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB3 + ": Cannot set flag!");
-            return;
-        }
-        var resSets4 = await axios.post(DOMAIN_SUB4 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB4 + "syncDataClient/true");
-            return;
-        });
-        if(resSet4 != null && resSets4.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB4 + ": Cannot set flag!");
-            return;
-        }
-        var resSets5 = await axios.post(DOMAIN_SUB5 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB5 + "syncDataClient/true");
-            return;
-        });
-        if(resSet5 != null && resSets5.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB5 + ": Cannot set flag!");
-            return;
-        }
-        var resSets6 = await axios.post(DOMAIN_SUB6 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB6 + "syncDataClient/true");
-            return;
-        });
-        if(resSet6 != null && resSets6.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB6 + ": Cannot set flag!");
-            return;
-        }
-        var resSets7 = await axios.post(DOMAIN_SUB7 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB7 + "syncDataClient/true");
-            return;
-        });
-        if(resSet7 != null && resSets7.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB7 + ": Cannot set flag!");
-            return;
-        }
-        var resSets8 = await axios.post(DOMAIN_SUB8 + "syncDataClient/false")
-        .catch(function (error) {
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
-            console.log("Exception when call: " + DOMAIN_SUB8 + "syncDataClient/true");
-            return;
-        });
-        if(resSet8 != null && resSets8.data.code < 0){
-            //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN_SUB8 + ": Cannot set flag!");
-        }
     }
     catch(e)
     {
         console.log("[API-ERROR] NOT FIXDATA host /domain not working");
     }
-    index = 1; 
 }
