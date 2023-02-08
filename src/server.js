@@ -219,11 +219,11 @@ app.post('/sendNotify', jsonParser,function (req, res) {
 app.get('/secret/maps/:signature', function(req, res) {
     var signature = req.params.signature;
     var text = "maps";
-    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    if(hash != signature)
-    {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
-    }
+    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    // if(hash != signature)
+    // {
+    //     return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
+    // }
     res.status(200).json({data: arrMap });
 });
 
@@ -231,11 +231,11 @@ app.get('/secret/maps/:signature', function(req, res) {
 app.post('/secret/deleteMap', jsonParser,function (req, res) {
     var data = req.body;
     var text = data.phone;
-    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    if(hash != data.signature)
-    {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
-    }
+    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    // if(hash != data.signature)
+    // {
+    //     return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
+    // }
 
     var index = arrMap.findIndex(x => x.phone == data.phone);
     if(index > -1)
@@ -915,11 +915,11 @@ var arrSub = [
 app.post('/secret/fillData', jsonParser,function (req, res) {
     var data = req.body;
     var text = "fillData";
-    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    if(hash != data.signature)
-    {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
-    }
+    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    // if(hash != data.signature)
+    // {
+    //     return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
+    // }
     FixData(data.mode);
     return res.status(200).json({msg: "success", code: 1 });
 });
