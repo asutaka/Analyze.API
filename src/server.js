@@ -1,4 +1,3 @@
-const { CheckDomain1, CheckDomain2, CheckDomain3, CheckDomain4 } = require('./cronjob.js');
 const express = require('express');
 const crypto = require('crypto')
 const bodyParser = require('body-parser');
@@ -28,10 +27,6 @@ app.get('/', async (req, res)  => {
     res.status(200).json({msg: "hello world", responseCode: 1 });
 })
 app.listen(PORT, () => console.log('server running in port: ' + PORT));
-CheckDomain1();
-CheckDomain2();
-CheckDomain3();
-CheckDomain4();
 
 let arrUser = [];
 let arrMap = [];
