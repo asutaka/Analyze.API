@@ -1070,10 +1070,11 @@ async function FixData(arr, DOMAIN) {
                 var symbol = num.toUpperCase();
                 axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500").then(async (response) => {
                     response.data.forEach((item) => {
-                        arrInsert.push({name: symbol, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
+                        arrInsert.push({name: num, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
                     }); 
                     if(arrInsert.length > 0)
                     {
+                        arrInsert.pop();
                         var model = { num: index + 1, data:  arrInsert}
                         var resInsert = await axios.post(DOMAIN + "syncDataClientVal", model)
                         .catch(function (error) {
