@@ -13,8 +13,8 @@ const DOMAIN_SUB7 = "https://asutakayahoo-subcribe7.onrender.com/";
 const DOMAIN_SUB8 = "https://asutakayahoo-subcribe8.onrender.com/";
 const CHAT_ID = 1828525662;
 
-const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
-// const bot = new Telegraf('5026250022:AAHr5fqu1P5C00f1O_m5SeC5qcrFbSFO7F0');
+// const bot = new Telegraf('5944056940:AAHTZcGNojAcFqI4LVC1y4CRNvP0NjBkVaU');
+const bot = new Telegraf('5026250022:AAHr5fqu1P5C00f1O_m5SeC5qcrFbSFO7F0');
 // Require `PhoneNumberFormat`. 
 const PNF = require('google-libphonenumber').PhoneNumberFormat;
 // Get an instance of `PhoneNumberUtil`. 
@@ -203,7 +203,9 @@ app.post('/sendNotify', jsonParser,function (req, res) {
     {
         try{
             var entity = arrMap[index];
-            bot.telegram.sendMessage(entity.chatId, message);
+            bot.telegram.sendMessage(entity.chatId, message).catch(function (error){
+                console.log("[EXCEPTION]sendMessage|", error);
+            });;
             return res.status(200).json({msg: "success", code: 1 });
         }catch(e){
             return res.status(200).json({msg: "[API-ERROR] Exception when send Notify!", code: -800 }); 
@@ -912,6 +914,103 @@ var arrSub = [
     'zrxusdt',
 ];
 
+app.post('/secret/fillDataDetail', jsonParser,function (req, res) {
+    var data = req.body;
+    var mode = data.mode;
+    var time = new Date();
+    var updateTime = time.getTime();
+    var DOMAIN = "";
+    var arr = [];
+    if(mode == 1)
+    {
+        arr = arrSub1;
+        DOMAIN = DOMAIN_SUB1;
+    }
+    else if(mode == 2)
+    {
+        arr = arrSub2;
+        DOMAIN = DOMAIN_SUB2;
+    }
+    else if(mode == 3)
+    {
+        arr = arrSub3;
+        DOMAIN = DOMAIN_SUB3;
+    }
+    else if(mode == 4)
+    {
+        arr = arrSub4;
+        DOMAIN = DOMAIN_SUB4;
+    }
+    else if(mode == 5)
+    {
+        arr = arrSub5;
+        DOMAIN = DOMAIN_SUB5;
+    }
+    else if(mode == 6)
+    {
+        arr = arrSub6;
+        DOMAIN = DOMAIN_SUB6;
+    }
+    else if(mode == 7)
+    {
+        arr = arrSub7;
+        DOMAIN = DOMAIN_SUB7;
+    }
+    else if(mode == 8)
+    {
+        arr = arrSub8;
+        DOMAIN = DOMAIN_SUB8;
+    }
+    try{
+        var index = arr.findIndex(x => x == data.symbol);
+        let arrInsert = [];
+        var symbol = data.symbol.toUpperCase();
+        axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500").then(async (response) => {
+            response.data.forEach((item) => {
+                arrInsert.push({name: symbol, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
+            }); 
+            if(arrInsert.length > 0)
+            {
+                var model = { num: index + 1, data:  arrInsert}
+                var resInsert = await axios.post(DOMAIN + "syncDataClientVal", model)
+                .catch(function (error) {
+                    console.log("Exception when call: " + DOMAIN + "syncDataClientVal");
+                    try{
+                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + data.symbol).catch(function (error){
+                            console.log("[EXCEPTION]sendMessage|", error);
+                        });
+                    }
+                    catch(eTele)
+                    {
+                        console.log("Exception when call: " + DOMAIN + "syncDataClientVal(SendTelegram)");
+                    }
+                });
+                if(resInsert != null)
+                {
+                    console.log("resInsert:", data.symbol, resInsert.data, arrInsert.length);
+                }
+            }
+        })
+        .catch(function (error) {
+            console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500");
+            try{
+                bot.telegram.sendMessage(CHAT_ID, "Exception: " + data.symbol).catch(function (error){
+                    console.log("[EXCEPTION]sendMessage|", error);
+                });
+            }
+            catch(eTele)
+            {
+                console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500(SendTelegram)");
+            }
+        });
+    }
+    catch(ex)
+    {
+        console.log("[API-ERROR] NOT FIXDATA symbol " + data.symbol + " not working");
+    }
+    return res.status(200).json({msg: "success", code: 1 });
+});
+
 app.post('/secret/fillData', jsonParser,function (req, res) {
     var data = req.body;
     if(data.mode <= 0 || data.mode == 1)
@@ -980,7 +1079,9 @@ async function FixData(arr, DOMAIN) {
                         .catch(function (error) {
                             console.log("Exception when call: " + DOMAIN + "syncDataClientVal");
                             try{
-                                bot.telegram.sendMessage(CHAT_ID, "Exception: " + num);
+                                bot.telegram.sendMessage(CHAT_ID, "Exception: " + num).catch(function (error){
+                                    console.log("[EXCEPTION]sendMessage|", error);
+                                });
                             }
                             catch(eTele)
                             {
@@ -996,7 +1097,9 @@ async function FixData(arr, DOMAIN) {
                 .catch(function (error) {
                     console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500");
                     try{
-                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + num);
+                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + num).catch(function (error){
+                            console.log("[EXCEPTION]sendMessage|", error);
+                        });
                     }
                     catch(eTele)
                     {
@@ -1020,7 +1123,9 @@ async function FixData(arr, DOMAIN) {
         .then(() => {
             console.log('all done!')
             //send tele
-            bot.telegram.sendMessage(CHAT_ID, DOMAIN + ": SynData success!");
+            bot.telegram.sendMessage(CHAT_ID, DOMAIN + ": SynData success!").catch(function (error){
+                console.log("[EXCEPTION]sendMessage|", error);
+            });
         })
     }
     catch(e)
