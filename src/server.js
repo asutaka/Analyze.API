@@ -144,8 +144,8 @@ app.post('/secret/insertUser', jsonParser,function (req, res) {
     var data = req.body;
     if(data.lData != null && data.lData.length > 0)
     {
-        arrUser = [];
-        arrUser = data.lData;
+        arrUser.length = 0;
+        arrUser.push(...data.lData);
     }
     if(data.data != null)
     {
