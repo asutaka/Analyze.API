@@ -147,8 +147,8 @@ app.post('/secret/insertUser', jsonParser,function (req, res) {
     var data = req.body;
     if(data.lData != null && data.lData.length > 0)
     {
-        arrUser = [];
-        arrUser = data.lData;
+        arrUser.length = 0;
+        arrUser.push(...data.lData);
     }
     if(data.data != null)
     {
@@ -166,6 +166,52 @@ bot.on("message", async (ctx) => {
     const chatId = ctx.update.message.chat.id;
     if(message != "" && message != undefined){
         try{
+            var mes = message.toLowerCase();
+            if(mes.includes(">>exec"))
+            {
+                let result = mes.replace(new RegExp(">>exec", 'g'), '')
+                            .replace(new RegExp(" ", 'g'), '');
+                console.log("result", result);
+                if(result.includes("mode="))
+                {
+                    try{
+                        var mode = 0;
+                        var symbol = "";
+                        const myArray = result.split(";");
+                        if(myArray.length <= 1)
+                        {
+                            mode = parseInt(myArray[0].replace("mode=", ""));
+                            FillData(mode);
+                        }
+                        else{
+                            if(myArray[0].includes("mode=")){
+                                mode = parseInt(myArray[0].replace("mode=", ""));
+                                symbol = myArray[1].replace("symbol=", "")
+                            }
+                            else{
+                                mode = parseInt(myArray[1].replace("mode=", ""));
+                                symbol = myArray[0].replace("symbol=", "")
+                            }
+
+                            FillDataDetail(mode, symbol);
+                        }
+                    }
+                    catch(eP)
+                    {
+                        console.log("[EXCEPTION] when parsing data");
+                    }
+                }
+            }
+            else if(mes.includes("start"))
+            {
+                console.log("hereSTART");
+            }
+            else if(mes.includes("stop"))
+            {
+                console.log("hereSTOP");
+            } 
+            else
+            {
                 // Parse number with country code. 
                 var phoneNumber = phoneUtil.parse(message, 'VN');
                 // Print number in the international format. 
@@ -183,6 +229,7 @@ bot.on("message", async (ctx) => {
                     }
                     console.log("arrMap", arrMap);
                 }
+            }  
         }
         catch
         {
@@ -919,7 +966,11 @@ var arrSub = [
 
 app.post('/secret/fillDataDetail', jsonParser,function (req, res) {
     var data = req.body;
-    var mode = data.mode;
+    FillDataDetail(data.mode, data.symbol);
+    return res.status(200).json({msg: "success", code: 1 });
+});
+
+function FillDataDetail(mode, sym){
     var time = new Date();
     var updateTime = time.getTime();
     var DOMAIN = "";
@@ -965,9 +1016,9 @@ app.post('/secret/fillDataDetail', jsonParser,function (req, res) {
         DOMAIN = DOMAIN_SUB8;
     }
     try{
-        var index = arr.findIndex(x => x == data.symbol);
+        var index = arr.findIndex(x => x == sym);
         let arrInsert = [];
-        var symbol = data.symbol.toUpperCase();
+        var symbol = sym.toUpperCase();
         axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500").then(async (response) => {
             response.data.forEach((item) => {
                 arrInsert.push({name: symbol, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
@@ -979,7 +1030,7 @@ app.post('/secret/fillDataDetail', jsonParser,function (req, res) {
                 .catch(function (error) {
                     console.log("Exception when call: " + DOMAIN + "syncDataClientVal");
                     try{
-                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + data.symbol).catch(function (error){
+                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + sym).catch(function (error){
                             console.log("[EXCEPTION]sendMessage|", error);
                         });
                     }
@@ -990,14 +1041,14 @@ app.post('/secret/fillDataDetail', jsonParser,function (req, res) {
                 });
                 if(resInsert != null)
                 {
-                    console.log("resInsert:", data.symbol, resInsert.data, arrInsert.length);
+                    console.log("resInsert:", sym, resInsert.data, arrInsert.length);
                 }
             }
         })
         .catch(function (error) {
             console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500");
             try{
-                bot.telegram.sendMessage(CHAT_ID, "Exception: " + data.symbol).catch(function (error){
+                bot.telegram.sendMessage(CHAT_ID, "Exception: " + sym).catch(function (error){
                     console.log("[EXCEPTION]sendMessage|", error);
                 });
             }
@@ -1009,48 +1060,51 @@ app.post('/secret/fillDataDetail', jsonParser,function (req, res) {
     }
     catch(ex)
     {
-        console.log("[API-ERROR] NOT FIXDATA symbol " + data.symbol + " not working");
+        console.log("[API-ERROR] NOT FIXDATA symbol " + sym + " not working");
     }
-    return res.status(200).json({msg: "success", code: 1 });
-});
+}
 
 app.post('/secret/fillData', jsonParser,function (req, res) {
     var data = req.body;
-    if(data.mode <= 0 || data.mode == 1)
+    FillData(data.mode);
+    return res.status(200).json({msg: "success", code: 1 });
+});
+
+function FillData(mode)
+{
+    if(mode <= 0 || mode == 1)
     {
         FixData(arrSub1, DOMAIN_SUB1);
     }
-    if(data.mode <= 0 || data.mode == 2)
+    if(mode <= 0 || mode == 2)
     {
         FixData(arrSub2, DOMAIN_SUB2);
     }
-    if(data.mode <= 0 || data.mode == 3)
+    if(mode <= 0 || mode == 3)
     {
         FixData(arrSub3, DOMAIN_SUB3);
     }
-    if(data.mode <= 0 || data.mode == 4)
+    if(mode <= 0 || mode == 4)
     {
         FixData(arrSub4, DOMAIN_SUB4);
     }
-    if(data.mode <= 0 || data.mode == 5)
+    if(mode <= 0 || mode == 5)
     {
         FixData(arrSub5, DOMAIN_SUB5);
     }
-    if(data.mode <= 0 || data.mode == 6)
+    if(mode <= 0 || mode == 6)
     {
         FixData(arrSub6, DOMAIN_SUB6);
     }
-    if(data.mode <= 0 || data.mode == 7)
+    if(mode <= 0 || mode == 7)
     {
         FixData(arrSub7, DOMAIN_SUB7);
     }
-    if(data.mode <= 0 || data.mode == 8)
+    if(mode <= 0 || mode == 8)
     {
         FixData(arrSub8, DOMAIN_SUB8);
     }
-   
-    return res.status(200).json({msg: "success", code: 1 });
-});
+}
 
 var index = 1;
 async function FixData(arr, DOMAIN) {
