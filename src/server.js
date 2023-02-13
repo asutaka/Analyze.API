@@ -32,14 +32,14 @@ let arrUser = [];
 let arrMap = [];
 
 //Get All User
-app.get('/secret/users', function(req, res) {
-    // var signature = req.params.signature;
-    // var text = "users";
-    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    // if(hash != signature)
-    // {
-    //     return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
-    // }
+app.get('/secret/users/:signature', function(req, res) {
+    var signature = req.params.signature;
+    var text = "users";
+    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    if(hash != signature)
+    {
+        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
+    }
     res.status(200).json({data: arrUser });
 });
 
@@ -147,8 +147,8 @@ app.post('/secret/insertUser', jsonParser,function (req, res) {
     var data = req.body;
     if(data.lData != null && data.lData.length > 0)
     {
-        arrUser.length = 0;
-        arrUser.push(...data.lData);
+        arrUser = [];
+        arrUser = data.lData;
     }
     if(data.data != null)
     {
@@ -166,52 +166,6 @@ bot.on("message", async (ctx) => {
     const chatId = ctx.update.message.chat.id;
     if(message != "" && message != undefined){
         try{
-            var mes = message.toLowerCase();
-            if(mes.includes(">>exec"))
-            {
-                let result = mes.replace(new RegExp(">>exec", 'g'), '')
-                            .replace(new RegExp(" ", 'g'), '');
-                console.log("result", result);
-                if(result.includes("mode="))
-                {
-                    try{
-                        var mode = 0;
-                        var symbol = "";
-                        const myArray = result.split(";");
-                        if(myArray.length <= 1)
-                        {
-                            mode = parseInt(myArray[0].replace("mode=", ""));
-                            FillData(mode);
-                        }
-                        else{
-                            if(myArray[0].includes("mode=")){
-                                mode = parseInt(myArray[0].replace("mode=", ""));
-                                symbol = myArray[1].replace("symbol=", "")
-                            }
-                            else{
-                                mode = parseInt(myArray[1].replace("mode=", ""));
-                                symbol = myArray[0].replace("symbol=", "")
-                            }
-
-                            FillDataDetail(mode, symbol);
-                        }
-                    }
-                    catch(eP)
-                    {
-                        console.log("[EXCEPTION] when parsing data");
-                    }
-                }
-            }
-            else if(mes.includes("start"))
-            {
-                console.log("hereSTART");
-            }
-            else if(mes.includes("stop"))
-            {
-                console.log("hereSTOP");
-            } 
-            else
-            {
                 // Parse number with country code. 
                 var phoneNumber = phoneUtil.parse(message, 'VN');
                 // Print number in the international format. 
@@ -229,7 +183,6 @@ bot.on("message", async (ctx) => {
                     }
                     console.log("arrMap", arrMap);
                 }
-            }  
         }
         catch
         {
@@ -966,11 +919,7 @@ var arrSub = [
 
 app.post('/secret/fillDataDetail', jsonParser,function (req, res) {
     var data = req.body;
-    FillDataDetail(data.mode, data.symbol);
-    return res.status(200).json({msg: "success", code: 1 });
-});
-
-function FillDataDetail(mode, sym){
+    var mode = data.mode;
     var time = new Date();
     var updateTime = time.getTime();
     var DOMAIN = "";
@@ -1016,9 +965,9 @@ function FillDataDetail(mode, sym){
         DOMAIN = DOMAIN_SUB8;
     }
     try{
-        var index = arr.findIndex(x => x == sym);
+        var index = arr.findIndex(x => x == data.symbol);
         let arrInsert = [];
-        var symbol = sym.toUpperCase();
+        var symbol = data.symbol.toUpperCase();
         axios.get("https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500").then(async (response) => {
             response.data.forEach((item) => {
                 arrInsert.push({name: symbol, e: item[0], c: item[4], o: item[1], h: item[2], l: item[3], v: item[5], q: item[7], ut: updateTime, state: true});
@@ -1030,7 +979,7 @@ function FillDataDetail(mode, sym){
                 .catch(function (error) {
                     console.log("Exception when call: " + DOMAIN + "syncDataClientVal");
                     try{
-                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + sym).catch(function (error){
+                        bot.telegram.sendMessage(CHAT_ID, "Exception: " + data.symbol).catch(function (error){
                             console.log("[EXCEPTION]sendMessage|", error);
                         });
                     }
@@ -1041,14 +990,14 @@ function FillDataDetail(mode, sym){
                 });
                 if(resInsert != null)
                 {
-                    console.log("resInsert:", sym, resInsert.data, arrInsert.length);
+                    console.log("resInsert:", data.symbol, resInsert.data, arrInsert.length);
                 }
             }
         })
         .catch(function (error) {
             console.log("Exception when call: " + "https://api3.binance.com/api/v3/klines?symbol=" + symbol + "&interval=1h&limit=500");
             try{
-                bot.telegram.sendMessage(CHAT_ID, "Exception: " + sym).catch(function (error){
+                bot.telegram.sendMessage(CHAT_ID, "Exception: " + data.symbol).catch(function (error){
                     console.log("[EXCEPTION]sendMessage|", error);
                 });
             }
@@ -1060,51 +1009,48 @@ function FillDataDetail(mode, sym){
     }
     catch(ex)
     {
-        console.log("[API-ERROR] NOT FIXDATA symbol " + sym + " not working");
+        console.log("[API-ERROR] NOT FIXDATA symbol " + data.symbol + " not working");
     }
-}
-
-app.post('/secret/fillData', jsonParser,function (req, res) {
-    var data = req.body;
-    FillData(data.mode);
     return res.status(200).json({msg: "success", code: 1 });
 });
 
-function FillData(mode)
-{
-    if(mode <= 0 || mode == 1)
+app.post('/secret/fillData', jsonParser,function (req, res) {
+    var data = req.body;
+    if(data.mode <= 0 || data.mode == 1)
     {
         FixData(arrSub1, DOMAIN_SUB1);
     }
-    if(mode <= 0 || mode == 2)
+    if(data.mode <= 0 || data.mode == 2)
     {
         FixData(arrSub2, DOMAIN_SUB2);
     }
-    if(mode <= 0 || mode == 3)
+    if(data.mode <= 0 || data.mode == 3)
     {
         FixData(arrSub3, DOMAIN_SUB3);
     }
-    if(mode <= 0 || mode == 4)
+    if(data.mode <= 0 || data.mode == 4)
     {
         FixData(arrSub4, DOMAIN_SUB4);
     }
-    if(mode <= 0 || mode == 5)
+    if(data.mode <= 0 || data.mode == 5)
     {
         FixData(arrSub5, DOMAIN_SUB5);
     }
-    if(mode <= 0 || mode == 6)
+    if(data.mode <= 0 || data.mode == 6)
     {
         FixData(arrSub6, DOMAIN_SUB6);
     }
-    if(mode <= 0 || mode == 7)
+    if(data.mode <= 0 || data.mode == 7)
     {
         FixData(arrSub7, DOMAIN_SUB7);
     }
-    if(mode <= 0 || mode == 8)
+    if(data.mode <= 0 || data.mode == 8)
     {
         FixData(arrSub8, DOMAIN_SUB8);
     }
-}
+   
+    return res.status(200).json({msg: "success", code: 1 });
+});
 
 var index = 1;
 async function FixData(arr, DOMAIN) {
