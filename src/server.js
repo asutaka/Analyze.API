@@ -126,7 +126,7 @@ app.post('/checkUser', jsonParser,function (req, res) {
         return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
     }
 
-    var index = arrUser.findIndex(x => x.phone == data.phone);
+    var index = arrUser.findIndex(x => x.phone == data.phone && x.password == data.password);
     if(index > -1)
     {
         var entity = arrUser[index];
