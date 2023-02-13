@@ -30,17 +30,19 @@ app.listen(PORT, () => console.log('server running in port: ' + PORT));
 
 let arrUser = [];
 let arrMap = [];
+
 //Get All User
-app.get('/secret/users/:signature', function(req, res) {
-    var signature = req.params.signature;
-    var text = "users";
-    let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
-    if(hash != signature)
-    {
-        return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
-    }
+app.get('/secret/users', function(req, res) {
+    // var signature = req.params.signature;
+    // var text = "users";
+    // let hash = crypto.createHmac('sha256', "NY2023@").update(text).digest("base64");
+    // if(hash != signature)
+    // {
+    //     return res.status(200).json({msg: "[API-ERROR] Signature Incorrect!", code: -700 });
+    // }
     res.status(200).json({data: arrUser });
 });
+
 //Delete User
 app.post('/secret/deleteUser', jsonParser,function (req, res) {
     var data = req.body;
@@ -62,6 +64,7 @@ app.post('/secret/deleteUser', jsonParser,function (req, res) {
         return res.status(200).json({msg: "[API-ERROR] User Not Found!", code: -600 }); 
     }
 });
+
 //Update Password
 app.post('/updatePassword', jsonParser,function (req, res) {
     var data = req.body;
