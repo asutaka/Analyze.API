@@ -561,6 +561,7 @@ var arrSub6 = [
 var arrSub7 = [
     'reiusdt',
     'renusdt',
+    'zilusdt',
     'requsdt',
     'rifusdt',
     'rlcusdt',
@@ -597,6 +598,7 @@ var arrSub7 = [
     'tkousdt',
     'tlmusdt',
     'tomousdt',
+    'zrxusdt',
 ];
 var arrSub8 = [
     'trbusdt',
@@ -639,8 +641,6 @@ var arrSub8 = [
     'yggusdt',
     'zecusdt',
     'zenusdt',
-    'zilusdt',
-    'zrxusdt',
 ];
 var arrSub = [
     '1inchusdt',
